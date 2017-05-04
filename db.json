@@ -1,0 +1,22 @@
+
+{
+    "firstName"     : "string",
+    "secondName"    : "string",
+    "adress"        : "string",
+    "city"          : "string",
+    "policy" : {
+        "describe"  : "string",
+        "value"     : "number",
+        "payday"    : "date",
+        "warning"   : "Curentdate - payday"  
+        },
+    "telephone"     : "number",
+    "recomendation" : "string"
+}
+
+
+{
+    "telephone"     : "number",
+    "name"          : "string"
+
+}
