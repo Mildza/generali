@@ -35,8 +35,22 @@ router.post('/dashboard', (req, res, next) => {
   });
 });
 
-router.get('/clients', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-  res.json();
+router.get('/api', (req, res, next) => { 
+
+    const firstname = "Marija"
+    Client.getClients(firstname, (err, client) => {
+        if(err) throw err
+        if(!client) {
+            return res.json({success: false, msg:'User not found'})
+        }       
+        res.json({                              
+            client: {                        
+                firstname: client.firstname,
+                lastname: client.lastname,
+                street: client.address.street                
+            }
+        })   
+    })  
 })
 
 module.exports = router;

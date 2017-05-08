@@ -36,19 +36,7 @@ module.exports.addClient = function(newClient, callback){
   newClient.save(callback);
 }
 
-module.exports.getClients = function(err, callback){
-  Client.find(callback);
+module.exports.getClients = function(firstname, callback) {
+    const query = {firstname: firstname}
+    Client.findOne(query, callback)
 }
-
-// module.exports.getClientByName = function(name, callback){
-//   const query = {firstname: name.first}
-//   User.findOne(query, callback);
-// }
-
-// module.exports.getClientByLastName = function(name, callback){
-//   const query = {firstname: name.last}
-//   User.findOne(query, callback);
-// }
-
-
-
