@@ -12,7 +12,7 @@ router.post('/dashboard', (req, res, next) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,    
     phone: req.body.phone,
-    address : {
+    address: {
       street: req.body.street,
       city: req.body.city
     },
@@ -35,22 +35,74 @@ router.post('/dashboard', (req, res, next) => {
   });
 });
 
-router.get('/api', (req, res, next) => { 
 
-    const firstname = "Marija"
-    Client.getClients(firstname, (err, client) => {
-        if(err) throw err
-        if(!client) {
-            return res.json({success: false, msg:'User not found'})
-        }       
-        res.json({                              
-            client: {                        
-                firstname: client.firstname,
-                lastname: client.lastname,
-                street: client.address.street                
-            }
-        })   
-    })  
+router.post('/find', (req, res, next) => {
+  
+  // console.log(req.body.firstname)
+  const client = {
+    firstname: req.body.firstname
+  }
+   
+  Client.postFind(client, (err, client) => {
+    if(err){
+      res.json({success: false, msg:'Failed search'});
+      next()
+    }
+    res.json(client)
+    
+  });
+});
+
+router.get('/search', passport.authenticate('jwt', {session:false}),  (req, res) => { 
+    
+    const firstname = "Kalina"
+    Client.getSearch(firstname, (err, client) => {
+      if(err) throw err
+      if(!client) {
+          return res.json({success: false, msg:'User not found'})
+      }       
+      res.json({                              
+          client: {                        
+            firstname: client.firstname,
+            lastname: client.lastname,
+            street: client.address.street,
+            city: client.address.city,
+            phone: client.phone,
+            describe: client.policy.describe,
+            value: client.policy.value,
+            payday: client.policy.payday,
+            warning: client.policy.warning,
+            recommendation: client.recommendation,
+            note: client.note                                
+          }
+      })   
+  })  
+})
+
+router.get('/all', passport.authenticate('jwt', {session:false}), function(req, res) {
+  Client.getAll((err, client) => {
+    if(err) {
+      res.send('Something went wrong')
+      next()
+    }
+    res.json(client) 
+  })
+})
+
+router.get('/update/:id', function(req, res) {
+  const client = {
+    id: req.params.id    
+  }
+  
+  
+  console.log(client.id)
+   Client.getUpdate(client, (err, client) => {
+      if(err){
+      res.json({success: false, msg:'Failed search'});      
+    }
+    res.json(client)
+  
+})
 })
 
 module.exports = router;

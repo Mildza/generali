@@ -19,14 +19,17 @@ const ClientSchema = mongoose.Schema({
   policy : {
       describe: String,
       value: Number,
-      payday: Date,
-      warning: Date
+      payday: String,
+      warning: String
   },  
   recommendation: {
     type: String
   },
   note: {
     type: String
+  },
+  _id : {
+    type:String
   }
 });
 
@@ -36,7 +39,23 @@ module.exports.addClient = function(newClient, callback){
   newClient.save(callback);
 }
 
-module.exports.getClients = function(firstname, callback) {
+// module.exports.getClients = function(param, callback) {
+//     const query = {param: param}
+//     Client.find({query}, callback)
+// }
+module.exports.getSearch = function(firstname, callback) {
     const query = {firstname: firstname}
     Client.findOne(query, callback)
+}
+
+module.exports.postFind = function(client, callback) {
+    Client.find({firstname: client.firstname} , callback)
+}
+
+module.exports.getAll = function(callback) {
+    Client.find({}, callback)
+}
+module.exports.getUpdate = function(client, callback) {
+    const query = {_id: client.id}
+    Client.find(query, callback)
 }
