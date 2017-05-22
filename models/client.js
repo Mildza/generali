@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
+
 // Client Schema
 const ClientSchema = mongoose.Schema({
 
@@ -28,8 +29,8 @@ const ClientSchema = mongoose.Schema({
   note: {
     type: String
   },
-  _id : {
-    type:String
+  id : {
+    type: String
   }
 });
 
@@ -56,6 +57,6 @@ module.exports.getAll = function(callback) {
     Client.find({}, callback)
 }
 module.exports.getUpdate = function(client, callback) {
-    const query = {_id: client.id}
+    const query = {id: client.id}
     Client.find(query, callback)
 }
