@@ -1,0 +1,111 @@
+<div class="container">
+<div class="col-md-8 col-md-offset-2"> 
+<form class="form-horizontal" (submit)="onFindSubmit()">
+  
+  <fieldset>
+      <h2 class="page-header">PRETRAGA KLIJENATA</h2>
+      
+      <div class="form-group">
+        <label for="firstname" class="col-sm-2 control-label text-left">Ime</label>
+        <div class="col-sm-8">
+          <input type="text" [(ngModel)]="firstname" name="firstname" class="form-control" id="firstname" placeholder="Ime">
+        </div>
+      </div>
+          
+  </fieldset>
+  <div>
+    <input type="submit" value="  Trazi  " class="btn btn-primary center-block">
+  </div>  
+</form>
+</div>
+<div *ngIf="result">
+ 
+<div *ngFor="let client of result"> 
+   <h2 class="page-header col-md-8 col-md-offset-3">{{client.firstname}} {{client.lastname}}</h2>
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Polisa:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.policy.describe}}
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Vrednost:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.policy.value}}
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Dan uplate:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.policy.payday}}
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Upozorenje:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.policy.warning}}
+      </div>
+    </div>
+      <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Preporuka:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.recommendation}}
+      </div>
+    </div>  
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Telefon:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.phone}}
+      </div>
+    </div>
+    
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Grad:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.address.city}}
+      </div>
+    </div>
+    
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Ulica:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.address.street}}
+      </div>
+    </div>
+      
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        Zabeleska:
+      </div>
+      <div class="col-md-6 well well-sm white">
+         {{client.note}}
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-3"> 
+      <div class="col-md-2 well well-sm black">
+        id:
+      </div>
+      <div class="col-md-6 well well-sm white" (click)="onSelect(client)">
+         {{client._id}}
+      </div>     
+    </div>
+  
+</div>
+</div>
+</div>

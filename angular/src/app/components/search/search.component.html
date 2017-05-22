@@ -1,0 +1,78 @@
+<div *ngIf="client">
+
+  <h2 class="page-header col-lg-8 col-lg-offset-3">{{client.firstname}} {{client.lastname}}</h2>
+  
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Telefon:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.phone}}
+      </div>
+    </div>
+    
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Grad:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.city}}
+      </div>
+    </div>
+    
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Ulica:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.street}}
+      </div>
+    </div>
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Polisa:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.describe}}
+      </div>
+    </div>
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Vrefnost:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.value}}
+      </div>
+    </div>
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Dan uplate:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.payday}}
+      </div>
+    </div><div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Upozorenje:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.warning}}
+      </div>
+    </div><div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Preporuka:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.recommendation}}
+      </div>
+    </div>    
+    <div class="col-lg-8 col-lg-offset-3"> 
+      <div class="col-lg-2 well well-sm white">
+        Zabeleska:
+      </div>
+      <div class="col-lg-6 well well-sm white">
+         {{client.note}}
+      </div>
+    </div>
+</div>
+
