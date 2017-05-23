@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
   {path:'all', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
-  {path: 'update/:id', component: UpdateComponent}  
+  {path: 'updateuser/:id', component: UpdateComponent}  
     
 ]
 

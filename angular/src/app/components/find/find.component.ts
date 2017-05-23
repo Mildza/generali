@@ -36,7 +36,7 @@ export class FindComponent implements OnInit {
 
    onSelect(client) {     
     //  console.log(client._id)
-    this.router.navigate(['/update', client._id]);
+    this.router.navigate(['/updateuser', client._id]);
   }
 
 

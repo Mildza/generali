@@ -24,8 +24,12 @@ export class UpdateComponent implements OnInit {
   
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id'];
-    
+
+    const id = this.route.snapshot.params['id']
     console.log(id)
+    this.authService.getUpdate(id)
+      .subscribe(result => this.result = result)
+
+
   }
 }
