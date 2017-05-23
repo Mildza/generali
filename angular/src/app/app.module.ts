@@ -15,6 +15,7 @@ import { SearchComponent } from './components/search/search.component';
 import { AllComponent } from './components/all/all.component';
 import { FindComponent } from './components/find/find.component';
 import { UpdateComponent } from './components/update/update.component';
+import { UpdatedComponent } from './components/updated/updated.component';
 
 import {ValidateService} from './services/validate.service'
 import {AuthService} from './services/auth.service'
@@ -32,8 +33,8 @@ const appRoutes: Routes = [
   {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
   {path:'all', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
-  {path: 'updateuser/:id', component: UpdateComponent}  
-    
+  {path: 'updateuser/:id', component: UpdateComponent},  
+  {path:'updated', component: UpdatedComponent},  
 ]
 
 @NgModule({
@@ -48,7 +49,8 @@ const appRoutes: Routes = [
     SearchComponent,
     AllComponent,
     FindComponent,
-    UpdateComponent   
+    UpdateComponent,
+    UpdatedComponent   
   ],
   imports: [
     BrowserModule,

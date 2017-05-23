@@ -27,6 +27,15 @@ export class AuthService {
       .map(res => res.json())
   }
 
+  updateClient(client) {
+    let headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    return this.http.post('http://localhost:3000/clients/rewrite', client, {headers: headers})
+      .map(res => res.json())
+  }
+
+
+
   postFind(search){
          
     let headers = new Headers()    
