@@ -91,19 +91,31 @@ router.get('/all', passport.authenticate('jwt', {session:false}), function(req, 
 
 router.get('/update/:id', function(req, res) {
   const client = {
-    _id: req.params
-  }
-  
-    
-  console.log(client._id)
 
+    id: req.params.id    
+  }  
+  
+  console.log(client.id)
+ 
    Client.getUpdate(client, (err, client) => {
       if(err){
       res.json({success: false, msg:'Failed search'});      
     }
     res.json(client)
-  
+    console.log(res.json(client))  
+  })
 })
+
+module.exports = router;
+  console.log(client.id)
+ 
+   Client.getUpdate(client, (err, client) => {
+      if(err){
+      res.json({success: false, msg:'Failed search'});      
+    }
+    res.json(client)
+    console.log(res.json(client))  
+  })
 })
 
 module.exports = router;

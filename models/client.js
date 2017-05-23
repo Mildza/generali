@@ -29,7 +29,7 @@ const ClientSchema = mongoose.Schema({
   note: {
     type: String
   },
-  _id : {
+  id : {
     type: String
   }
 });
@@ -57,6 +57,6 @@ module.exports.getAll = function(callback) {
     Client.find({}, callback)
 }
 module.exports.getUpdate = function(client, callback) {
-    const query = {_id: client._id}
-    Client.findById(query, callback)
+    const query = {_id: client.id}
+    Client.find(query, callback)
 }
