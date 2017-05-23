@@ -91,7 +91,7 @@ router.get('/all', passport.authenticate('jwt', {session:false}), function(req, 
 
 router.get('/update/:id', function(req, res) {
   const client = {
-    _id: req.params.id 
+    _id: req.params
   }
   
     
