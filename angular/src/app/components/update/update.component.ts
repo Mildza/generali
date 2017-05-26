@@ -14,7 +14,7 @@ export class UpdateComponent implements OnInit {
 
  
     firstname: String  
-    lastname: String 
+    // lastname: String 
     phone: Array<number>  
     address:{
       street: String
@@ -27,7 +27,10 @@ export class UpdateComponent implements OnInit {
     }   
     recommendation: String  
     note:String
- 
+
+ client : {
+   lastname: String
+ }
 
   result: {} 
 
@@ -51,9 +54,10 @@ export class UpdateComponent implements OnInit {
   }
 
   onUpdateSubmit(){
+      this.router.navigate(['updated']);
     const newclient = {
-      firstname: this.firstname
-      // lastname: this.client.lastname,
+      firstname: this.firstname,
+      // lastname: this.client.lastname
       // phone: this.client.phone,      
       // street: this.client.address.street,
       // city: this.client.address.city,
@@ -65,18 +69,19 @@ export class UpdateComponent implements OnInit {
       // note: this.client.note
     } 
       console.log(this.firstname)
+       console.log(this.client.lastname)
       
       
-      this.authService.updateClient(newclient).subscribe(data => {
-      if(data.success){
-        this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
-        // this.router.navigate(['/login'])  
-      } else {
-        this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
+    //   this.authService.updateClient(newclient).subscribe(data => {
+    //   if(data.success){
+    //     this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
+    //     // this.router.navigate(['/login'])  
+    //   } else {
+    //     this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
         
-        }
-    }) 
-      //  this.router.navigate(['/updated']);
+    //     }
+    // }) 
+     
   }  
 
 }
