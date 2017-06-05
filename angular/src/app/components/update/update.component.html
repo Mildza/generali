@@ -1,6 +1,6 @@
 <div *ngIf="result">
 <div class="col-lg-8 col-lg-offset-2"> 
-<form class="form-horizontal" #update="ngForm" (ngsubmit)="onUpdateSubmit()">
+<form class="form-horizontal" #update="ngForm" (submit)="onUpdateSubmit(client)" >
   
   <fieldset>
     <h2 class="page-header">PROMENI PODATKE</h2>
@@ -23,7 +23,8 @@
     <div class="form-group">
       <label for="lastname" class="col-sm-2 control-label text-left">Prezime</label>
       <div class="col-sm-8">      
-        <input type="text" [(ngModel)]="client.lastname" name="lastname" class="form-control" id="lastname">
+        <input type="text" class="form-control" id="lastname" 
+        [(ngModel)]="client.lastname" name="lastname" (click)=write(client) >
       </div>
     </div>
 

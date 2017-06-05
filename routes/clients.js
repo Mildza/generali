@@ -63,6 +63,39 @@ router.post('/rewrite', (req, res, next) => {
   // });
 });
 
+router.post('/update/:id', (req, res, next) => {
+
+  const client = {
+    id: req.params.id    
+  }   
+  
+  let newClient = new Client({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,    
+    phone: req.body.phone,
+    address: {
+      street: req.body.street,
+      city: req.body.city
+    },
+    policy: {
+      describe: req.body.describe,
+      value: req.body.value,
+      payday: req.body.payday,
+      warning: req.body.warning
+    },       
+    recommendation: req.body.recommendation,
+    note: req.body.note
+  });
+  console.log(newClient.firstname)
+  // Client.addClient(newClient, (err, user) => {
+  //   if(err){
+  //     res.json({success: false, msg:'Failed add Client'});
+  //   } else {
+  //     res.json({success: true, msg:'Client added'});
+  //   }
+  // });
+});
+
 
 
 router.post('/find', (req, res, next) => {

@@ -12,7 +12,8 @@ import {FlashMessagesService} from 'angular2-flash-messages'
 
 export class UpdateComponent implements OnInit {
 
- 
+  
+   lastname: String
     firstname: String  
     // lastname: String 
     phone: Array<number>  
@@ -28,9 +29,7 @@ export class UpdateComponent implements OnInit {
     recommendation: String  
     note:String
 
- client : {
-   lastname: String
- }
+
 
   result: {} 
 
@@ -52,35 +51,52 @@ export class UpdateComponent implements OnInit {
 
 
   }
-
-  onUpdateSubmit(){
-      this.router.navigate(['updated']);
+  write(client){
+    
     const newclient = {
-      firstname: this.firstname,
-      // lastname: this.client.lastname
-      // phone: this.client.phone,      
-      // street: this.client.address.street,
-      // city: this.client.address.city,
-      // describe: this.client.policy.describe,
-      // value: this.client.policy.value,
-      // payday: this.client.policy.payday,
-      // warning: this.client.policy.warning,
-      // recommendation: this.client.recommendation,
-      // note: this.client.note
+      firstname: client.firstname,
+      lastname: client.lastname,
+      phone: client.phone,      
+      street: client.address.street,
+      city: client.address.city,
+      describe: client.policy.describe,
+      value: client.policy.value,
+      payday: client.policy.payday,
+      warning: client.policy.warning,
+      recommendation: client.recommendation,
+      note: client.note
     } 
-      console.log(this.firstname)
-       console.log(this.client.lastname)
+    console.log(newclient)
+  }
+
+  onUpdateSubmit(client){
+    
+    
+       const newclient = {
+      firstname: client.firstname,
+      lastname: client.lastname,
+      phone: client.phone,      
+      street: client.address.street,
+      city: client.address.city,
+      describe: client.policy.describe,
+      value: client.policy.value,
+      payday: client.policy.payday,
+      warning: client.policy.warning,
+      recommendation: client.recommendation,
+      note: client.note
+    } 
+    // console.log(newclient.firstname, newclient.lastname, newclient.phone )
+       const id = this.route.snapshot.params['id']      
       
-      
-    //   this.authService.updateClient(newclient).subscribe(data => {
-    //   if(data.success){
-    //     this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
-    //     // this.router.navigate(['/login'])  
-    //   } else {
-    //     this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
+      this.authService.updateClient(id, newclient).subscribe(data => {
+      if(data.success){
+        this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
+        // this.router.navigate(['updated']);
+      } else {
+        this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
         
-    //     }
-    // }) 
+        }
+    }) 
      
   }  
 
