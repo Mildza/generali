@@ -60,3 +60,9 @@ module.exports.getUpdate = function(client, callback) {
     const query = {_id: client.id}
     Client.find(query, callback)
 }
+
+module.exports.updateClient = function(id, newClient, callback) {
+    const query = {_id: id}  
+    Client.findByIdAndUpdate(query, newClient, {upsert:true}, callback)
+    
+}

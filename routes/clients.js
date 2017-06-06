@@ -63,12 +63,14 @@ router.post('/rewrite', (req, res, next) => {
   // });
 });
 
-router.post('/update/:id', (req, res, next) => {
+router.post('/updateuser/:id', (req, res, next) => {
 
   const client = {
     id: req.params.id    
-  }   
-  
+  } 
+
+ 
+     
   let newClient = new Client({
     firstname: req.body.firstname,
     lastname: req.body.lastname,    
@@ -84,16 +86,18 @@ router.post('/update/:id', (req, res, next) => {
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,
-    note: req.body.note
+    note: req.body.note,
+    _id: client.id
   });
-  console.log(newClient.firstname)
-  // Client.addClient(newClient, (err, user) => {
-  //   if(err){
-  //     res.json({success: false, msg:'Failed add Client'});
-  //   } else {
-  //     res.json({success: true, msg:'Client added'});
-  //   }
-  // });
+  
+  Client.updateClient(client.id, newClient, (err, user) => {
+    if(err){
+      res.json({success: false, msg:'Failed add Client'});
+    } else {
+       newClient.save
+      res.json({success: true, msg:'Client added'});
+    }
+  });
 });
 
 

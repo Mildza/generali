@@ -72,7 +72,7 @@ export class UpdateComponent implements OnInit {
   onUpdateSubmit(client){
     
     
-       const newclient = {
+      const newclient = {
       firstname: client.firstname,
       lastname: client.lastname,
       phone: client.phone,      
