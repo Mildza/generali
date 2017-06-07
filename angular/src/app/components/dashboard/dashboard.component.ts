@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
     this.authService.addClient(client).subscribe(data => {
       if(data.success){
         this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
-        // this.router.navigate(['/login'])  
+        this.router.navigate(['/all'])  
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
         
