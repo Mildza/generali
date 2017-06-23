@@ -66,3 +66,15 @@ module.exports.updateClient = function(id, newClient, callback) {
     Client.findByIdAndUpdate(query, newClient, {upsert:true}, callback)
     
 }
+
+module.exports.updateClient2 = function(id, newClient, callback) {
+    const query = {_id: id}  
+    Client.findByIdAndUpdate(query, newClient, {upsert:true}, callback)
+    
+}
+
+module.exports.deleteClient = function(id, callback) {
+    const query = {_id: id}  
+    Client.remove(query, callback)
+    
+}

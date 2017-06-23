@@ -1,6 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
   {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
   {path:'all', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
-  {path: 'updateuser/:id', component: UpdateComponent},  
+  {path: 'update/:id', component: UpdateComponent},  
   {path:'updated', component: UpdatedComponent},  
 ]
 
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule

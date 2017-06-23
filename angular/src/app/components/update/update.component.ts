@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router, ActivatedRoute, Params} from '@angular/router'
 import { FormControl } from '@angular/forms';
@@ -49,30 +49,13 @@ export class UpdateComponent implements OnInit {
     const id = this.route.snapshot.params['id']
     this.authService.getUpdate(id)
       .subscribe(result => this.result = result)
+      // console.log(this.result)
 
 
   }
-  // write(client){
-    
-  //   const newclient = {
-  //     firstname: client.firstname,
-  //     lastname: client.lastname,
-  //     phone: client.phone,      
-  //     street: client.address.street,
-  //     city: client.address.city,
-  //     describe: client.policy.describe,
-  //     value: client.policy.value,
-  //     payday: client.policy.payday,
-  //     warning: client.policy.warning,
-  //     recommendation: client.recommendation,
-  //     note: client.note
-  //   } 
-  //   console.log(newclient)
-  // }
-
+  
   write(client){
-    
-    
+       console.log("milan")
       const newclient = {
       firstname: client.firstname,
       lastname: client.lastname,
@@ -86,13 +69,13 @@ export class UpdateComponent implements OnInit {
       recommendation: client.recommendation,
       note: client.note
     } 
-    // console.log(newclient.firstname, newclient.lastname, newclient.phone )
-       const id = this.route.snapshot.params['id']      
+      console.log(newclient.firstname, newclient.lastname, newclient.phone )
+      const id = this.route.snapshot.params['id']      
       
       this.authService.updateClient(id, newclient).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Promenjeni podaci', {cssClass: 'alert-success', timeout: 3000})
-        // this.router.navigate(['updated']);
+        this.router.navigate(['/all'])  
       } else {
         this.flashMessage.show('Promena nije uspela', {cssClass: 'alert-danger', timeout: 3000})
         

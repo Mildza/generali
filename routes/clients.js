@@ -63,7 +63,7 @@ router.post('/rewrite', (req, res, next) => {
   // });
 });
 
-router.post('/updateuser/:id', (req, res, next) => {
+router.post('/update/:id', (req, res, next) => {
 
   const client = {
     id: req.params.id    
@@ -170,4 +170,58 @@ router.get('/update/:id', function(req, res) {
      
   })
 }) 
+
+router.post('/updated', function(req, res) {
+       const client = {
+    id: req.body._id    
+  }
+  console.log(client.id)
+     
+  let newClient = new Client({
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,    
+    phone: req.body.phone,
+    address: {
+      street: req.body.street,
+      city: req.body.city
+    },
+    policy: {
+      describe: req.body.describe,
+      value: req.body.value,
+      payday: req.body.payday,
+      warning: req.body.warning
+    },       
+    recommendation: req.body.recommendation,
+    note: req.body.note,
+    _id: client.id
+    
+  });
+     
+    Client.updateClient(client.id, newClient, (err, user) => {
+    if(err){
+      console.error(err.stack)
+      res.json({success: false, msg:'Failed add Client'});
+    } else {
+       newClient.save
+      res.json({success: true, msg:'Client added'});
+    }
+  })
+})
+
+
+router.delete('/delete/:id', function(req, res) {
+  
+  const id = req.params.id       
+ 
+   Client.deleteClient(id, (err) => {
+      if(err){
+      res.json({success: false, msg:'Delete failed'})
+      next()      
+    }
+    res.json({success: true, msg:'Client deleted'})
+     
+  })
+}) 
+
+
 module.exports = router
