@@ -1,10 +1,5 @@
 
-.white {
- background-color: white;
- color:black;
-}
-
-.title {
-  font-weight: bold;
-  font-size: 1.2em;
+h2 {
+  cursor: pointer; 
+  cursor: hand;
 }

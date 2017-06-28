@@ -68,8 +68,6 @@ router.post('/update/:id', (req, res, next) => {
   const client = {
     id: req.params.id    
   } 
-
- 
      
   let newClient = new Client({
     firstname: req.body.firstname,
@@ -81,7 +79,7 @@ router.post('/update/:id', (req, res, next) => {
     },
     policy: {
       describe: req.body.describe,
-      value: req.body.value,
+      value: req.body.values,
       payday: req.body.payday,
       warning: req.body.warning
     },       
@@ -164,7 +162,7 @@ router.get('/update/:id', function(req, res) {
    Client.getUpdate(client, (err, client) => {
       if(err){
       res.json({success: false, msg:'Failed search'})
-      next()      
+         
     }
     res.json(client)
      
@@ -187,7 +185,7 @@ router.post('/updated', function(req, res) {
     },
     policy: {
       describe: req.body.describe,
-      value: req.body.value,
+      value: req.body.values,
       payday: req.body.payday,
       warning: req.body.warning
     },       
@@ -209,17 +207,15 @@ router.post('/updated', function(req, res) {
 })
 
 
-router.delete('/delete/:id', function(req, res) {
-  
+router.delete('/update/:id', function(req, res) {
   const id = req.params.id       
- 
-   Client.deleteClient(id, (err) => {
-      if(err){
+  Client.deleteClient(id, (err) => {
+    if(err){
       res.json({success: false, msg:'Delete failed'})
       next()      
     }
     res.json({success: true, msg:'Client deleted'})
-     
+    
   })
 }) 
 

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -17,6 +18,7 @@ import { AllComponent } from './components/all/all.component';
 import { FindComponent } from './components/find/find.component';
 import { UpdateComponent } from './components/update/update.component';
 import { UpdatedComponent } from './components/updated/updated.component';
+
 
 import {ValidateService} from './services/validate.service'
 import {AuthService} from './services/auth.service'
@@ -55,12 +57,13 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
-
+    
   ],
   providers: [ValidateService, AuthService, AuthGuard],
   bootstrap: [AppComponent],

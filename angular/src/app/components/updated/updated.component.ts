@@ -11,10 +11,7 @@ import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 })
 export class UpdatedComponent implements OnInit {
  
-  updateForm: FormGroup; // <--- heroForm is of type FormGroup
-
-
-  
+  updateForm: FormGroup;  
 
     lastname: String
     firstname: String   
@@ -31,13 +28,11 @@ export class UpdatedComponent implements OnInit {
     recommendation: String  
     note:String
 
-res: 
-  { 
+res: { 
     [0]   
   }
 
-  result:
-    {
+  result:{
     lastname: String
     firstname: String   
     phone: Array<number>  

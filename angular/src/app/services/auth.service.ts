@@ -34,16 +34,23 @@ export class AuthService {
   //     .map(res => res.json())
   // }
 
-updateClient(id, client) {
-  console.log(id, client)
+updateClient(id, client) { 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
     return this.http.post('http://localhost:3000/clients/update/'+ id, client, {headers: headers})
       .map(res => res.json())
   }
 
+deleteClient(id) { 
+    let headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    return this.http.delete('http://localhost:3000/clients/update/'+ id, {headers: headers})
+      .map(res => res.json())
+  }
+
+
   updateClient2(client) {
-  console.log(client)
+  
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
     return this.http.post('http://localhost:3000/clients/updated', client, {headers: headers})
