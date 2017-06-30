@@ -1,6 +1,7 @@
-<div *ngFor="let client of result"> 
-  <h2 class="page-header col-lg-8 col-lg-offset-3" (click)="toggleState()">{{client.firstname}} {{client.lastname}}</h2>
-  <div class="col-lg-12 " [@showing]="state" >     
+<div *ngFor="let client of result, let i = index"> 
+  <h2 class="page-header col-lg-8 col-lg-offset-3" (click)="clicked(clinet,i)">{{client.firstname}} {{client.lastname}}</h2>
+  <div class="col-lg-12 " *ngIf="client.show" > 
+  <!--<div class="col-lg-12 " [@clientState]="state" >     -->
     <div class="col-lg-8 col-lg-offset-3"> 
       <div class="col-lg-2 well well-sm white">
         Polisa:
