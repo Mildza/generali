@@ -16,15 +16,16 @@ import { trigger,
   
   animations: [
     trigger('clientState', [
-    state('show', style({
-      display:"block"
-     
-    })),
-    state('hide', style({
-      display:"none"
-    })),
-    transition('show => hide', animate('100ms ease-in')),
-    transition('hide => show', animate('100ms ease-out'))
+     state('hide', style({
+        transform: 'translateX(-100%)',
+        display:'none'
+      })),
+      state('show',   style({
+        transform: 'translateX(0)',
+        display:'block'
+      })),
+      transition('hide <=> show', animate('200ms ease-in')),
+      transition('show <=> hide', animate('200ms ease-out'))
   ])
 ]
 })
@@ -33,42 +34,58 @@ import { trigger,
 export class AllComponent implements OnInit {
 
   
-   state: String = "hide"
+   
   
-   show:boolean = false
+  //   public client:Array<any> = [{
+     public state = 'hide'
+    public client:Array<any> = [{
+    state: "hide"
+  }]
+    
+  
+   condition:boolean = false
     public result:Array<any> = [{
-    show: false
+    condition: false,
+    state: "hide"
   }]
    
   constructor(
     private authService:AuthService,
     private router:Router,
+    
     ){ }
 
   ngOnInit() {
     this.authService.getAll()
     .subscribe(result => this.result = result)  
-    // console.log("Success") 
-    
+    this.result= [{
+    condition: false,
+    state: "hide"
+    }]
   }
 
   
 
       clicked(client, index) {
-
-        console.log(index)
-              console.log(this.result[index].show)
-        this.result[index].show = !this.result[index].show;
-              console.log(this.result[index].show)
+              
+        this.result[index].condition = !this.result[index].condition;
+        this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
+        // console.log(this.result[index].condition)
+        // console.log(this.result[index].state)
+        // this.result[index].state = !this.result[index].state;
+        // this.result[index].state = (!this.result[index].state === 'hide' ? 'hide' : 'show');
+        
+        
+              
       }
         // this.show = !this.show
 
       
 
 
-    toggleState(i) {
-      console.log(i)
-      this.state = (this.state === 'show' ? 'hide' : 'show');
-    }
+    // toggleState(i) {
+    //   console.log(i)
+    //   this.state = (this.state === 'show' ? 'hide' : 'show');
+    // }
   
 }
