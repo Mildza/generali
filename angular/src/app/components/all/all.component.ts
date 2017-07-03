@@ -17,15 +17,21 @@ import { trigger,
   animations: [
     trigger('clientState', [
      state('hide', style({
-        transform: 'translateX(-100%)',
+        transform: 'translateY(+100%)',
         display:'none'
       })),
       state('show',   style({
-        transform: 'translateX(0)',
+        transform: 'translateY(0)',
         display:'block'
       })),
-      transition('hide <=> show', animate('200ms ease-in')),
-      transition('show <=> hide', animate('200ms ease-out'))
+      transition('hide => show', animate('400ms ease-in')),
+      transition('show => hide', animate('200ms ease-in')),
+      
+      
+      transition('void => hide', [
+      style({transform: 'translateX(+200%) scale(1)'}),
+      animate(500)      
+    ])
   ])
 ]
 })
@@ -37,17 +43,18 @@ export class AllComponent implements OnInit {
    
   
   //   public client:Array<any> = [{
-     public state = 'hide'
-    public client:Array<any> = [{
-    state: "hide"
-  }]
-    
+    public state = 'hide'
+  //   public client:Array<any> = [{
+  //   state: "hide"
+  // }]
+    result: {}
   
    condition:boolean = false
-    public result:Array<any> = [{
-    condition: false,
-    state: "hide"
-  }]
+  //   public result:Array<any> = [{
+  //   condition: false,
+  //   state: "hide"
+  // }]
+  
    
   constructor(
     private authService:AuthService,
@@ -58,17 +65,18 @@ export class AllComponent implements OnInit {
   ngOnInit() {
     this.authService.getAll()
     .subscribe(result => this.result = result)  
-    this.result= [{
-    condition: false,
-    state: "hide"
-    }]
+  //   this.result= [{
+   
+  //   state: "hide"
+  // }]
+  
   }
 
   
 
       clicked(client, index) {
               
-        this.result[index].condition = !this.result[index].condition;
+        // this.result[index].condition = !this.result[index].condition;
         this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
         // console.log(this.result[index].condition)
         // console.log(this.result[index].state)

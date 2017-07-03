@@ -1,9 +1,9 @@
+<div *ngIf="result">
 <div *ngFor="let client of result, let i = index" > 
-  <h2 class="page-header col-lg-8 col-lg-offset-3" ng-init="client.state=show"
-    
-  (click)="clicked(clinet,i)">{{client.firstname}} {{client.lastname}}</h2>
-  <div>{{client.state}} {{client.condition}}</div>
-  <div class="col-lg-12 "  [@clientState]="client.state || 'hide' || 'show' "   >
+  <h2 class="page-header col-lg-8 col-lg-offset-3" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
+
+  <div class="col-lg-12"  [@clientState]="client.state || 'hide'">
+ 
       <div class="col-lg-8 col-lg-offset-3"> 
       <div class="col-lg-2 well well-sm white">
         Polisa:
@@ -80,4 +80,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

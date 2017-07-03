@@ -1,11 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
+import { trigger, state, style,animate, transition, group} from '@angular/animations'
+
+declare var $:any;
 
 @Component({
   selector: 'app-find',
   templateUrl: './find.component.html',
-  styleUrls: ['./find.component.css']
+  styleUrls: ['./find.component.css'],
+   animations: [
+  trigger('itemAnim', [
+    transition(':enter', [
+      style({transform: 'translateX(-100%)'}),
+      animate(350)
+    ]),
+    transition(':leave', [
+      group([
+        animate('0.2s ease', style({
+          transform: 'translate(150px,25px)'
+        })),
+        animate('0.5s 0.2s ease', style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ])
+]
 })
 export class FindComponent implements OnInit {
 
@@ -20,7 +41,8 @@ export class FindComponent implements OnInit {
       private authService:AuthService,
       private router:Router) { }
 
-    ngOnInit() {    
+    ngOnInit() { 
+      
     }
 
     onFindSubmit(){
@@ -39,5 +61,10 @@ export class FindComponent implements OnInit {
     this.router.navigate(['/update', client._id]);
   }
 
+    ngAfterViewInit(){
+      
+
+    }
+  
 
 }
