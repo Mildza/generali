@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
 import { trigger, state, style,animate, transition, group} from '@angular/animations'
+import {  Validators } from '@angular/forms'
 
 declare var $:any;
 

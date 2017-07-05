@@ -1,84 +1,51 @@
-<div *ngIf="result">
-<div *ngFor="let client of result, let i = index" > 
-  <h2 class="page-header col-lg-8 col-lg-offset-3" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
+<div *ngIf="result" class="col-lg-8 col-lg-offset-2">
+  <div *ngFor="let client of result, let i = index" >
 
-  <div class="col-lg-12"  [@clientState]="client.state || 'hide'">
- 
-      <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Polisa:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.policy.describe}}
-      </div>
+    <h2 class="page-header col-sm-2-offset-4 header-margin" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
+    <div  [@clientState]="client.state || 'hide'">
+
+    <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>
+    <div class="col-sm-9 well well-sm white field-margin" name="policy">
+        {{client.policy.describe}}
+    </div>    
+  
+    <label  for="value" class="col-sm-2 control-label label-padding">Vrednost:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.policy.value}}
     </div>
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Vrednost:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.policy.value}}
-      </div>
+
+    <label  for="payday" class="col-sm-2 control-label label-padding">Dan uplate:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.policy.payday}}
     </div>
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Dan uplate:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.policy.payday}}
-      </div>
+  
+    <label  for="warning" class="col-sm-2 control-label label-padding">Upozorenje:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.policy.warning}}
     </div>
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Upozorenje:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.policy.warning}}
-      </div>
+
+    <label  for="recommendation" class="col-sm-2 control-label label-padding">Preporuka:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.recommendation}}
     </div>
-      <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Preporuka:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.recommendation}}
-      </div>
-    </div>  
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Telefon:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.phone}}
-      </div>
+
+    <label  for="phone" class="col-sm-2 control-label label-padding">Telefon:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.phone}}
     </div>
-    
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Grad:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.address.city}}
-      </div>
+    <label  for="city" class="col-sm-2 control-label label-padding">Grad:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.address.city}}
     </div>
-    
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Ulica:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.address.street}}
-      </div>
+
+    <label  for="payday" class="col-sm-2 control-label label-padding">Ulica:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.address.street}}
     </div>
-      
-    <div class="col-lg-8 col-lg-offset-3"> 
-      <div class="col-lg-2 well well-sm white">
-        Zabeleska:
-      </div>
-      <div class="col-lg-6 well well-sm white">
-         {{client.note}}
-      </div>
+
+    <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
+    <div class="col-sm-9 well well-sm white">
+        {{client.note}}
     </div>
   </div>
-</div>
 </div>

@@ -3,3 +3,18 @@ h2 {
   cursor: pointer; 
   cursor: hand;
 }
+
+.label-padding{
+  padding:9px;
+  margin:0px;  
+}
+
+.header-margin{
+  margin:10px;
+}
+
+@media (min-width: 768px){
+  .field-margin{
+    margin-bottom:5px;
+  }
+}
