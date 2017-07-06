@@ -27,3 +27,9 @@
 .well-md {
     margin-bottom: 10px;
 }
+
+@media (max-width: 768px){
+  .field-margin{
+    margin-bottom:5px;
+  }
+}

@@ -17,15 +17,17 @@ import { trigger,
   animations: [
     trigger('clientState', [
      state('hide', style({
-        transform: 'translateY(+100%)',
-        display:'none'
+        transform: 'translateY(-100%)',
+        display:'none',
+        opacity:'0'
       })),
       state('show',   style({
         transform: 'translateY(0)',
-        display:'block'
+        display:'block',
+        opacity:'1'
       })),
-      transition('hide => show', animate('400ms ease-in')),
-      transition('show => hide', animate('200ms ease-in')),
+      transition('hide => show', animate('800ms ease-in')),
+      transition('show => hide', animate('400ms ease-in')),
       
      
   ])
@@ -34,9 +36,18 @@ import { trigger,
 
 export class AllComponent implements OnInit {
 
-    public client:Array<any> = [{
-    state: "hide"
-  }]
+  
+   public client = {
+     state:"hide"
+   }
+  //   public client:Array<any> = [{
+  //   state: "hide"
+  // }]
+//   public result:Array<any> = [{
+// -    condition: false,
+// -    state: "hide"
+// -  }]
+
   result: {}
       
   constructor(

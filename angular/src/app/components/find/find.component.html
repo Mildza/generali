@@ -26,85 +26,85 @@
 <div *ngFor="let client of result" [@itemAnim]> 
    <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname}} {{client.lastname}}</h2>
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin ">
         Polisa:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.policy.describe}}
       </div>
     </div>
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Vrednost:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.policy.value}}
       </div>
     </div>
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Dan uplate:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.policy.payday}}
       </div>
     </div>
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Upozorenje:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.policy.warning}}
       </div>
     </div>
       <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Preporuka:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.recommendation}}
       </div>
     </div>  
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Telefon:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.phone}}
       </div>
     </div>
     
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Grad:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.address.city}}
       </div>
     </div>
     
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Ulica:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.address.street}}
       </div>
     </div>
       
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         Zabeleska:
       </div>
-      <div class="col-md-6 well well-sm white">
+      <div class="col-md-6 well well-sm white field-margin">
          {{client.note}}
       </div>
     </div>
     <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black">
+      <div class="col-md-2 well well-sm black field-margin">
         id:
       </div>
-      <div class="col-md-6 well well-sm hand white" (click)="onSelect(client)"
+      <div class="col-md-6 well well-sm hand white field-margin" (click)="onSelect(client)"
       data-toggle="tooltip" data-placement="top" title="Izmeni Klijenta"
       >
          {{client._id}}         
