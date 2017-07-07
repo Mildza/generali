@@ -3,6 +3,7 @@ import {AuthService} from '../../services/auth.service'
 import {Router, ActivatedRoute, Params} from '@angular/router'
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {FlashMessagesService} from 'angular2-flash-messages'
+import { Http } from '@angular/http';
 
 declare var $:any;
 
@@ -61,7 +62,9 @@ export class UpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private fb: FormBuilder,
-    private flashMessage: FlashMessagesService
+    private flashMessage: FlashMessagesService,
+    private http: Http
+
     ) {
       
       this.createForm();
@@ -161,62 +164,68 @@ export class UpdateComponent implements OnInit {
     })
   }
 
-  uspelo(){
-            this.flashMessage.show('Korisnik obirsan', {cssClass: 'alert-success', timeout: 3000})
-            this.router.navigate(['/all']) 
-          }
-
-    ngAfterViewInit(){
-      
+    public  deleteClient(){
       const id = this.route.snapshot.params['id']
-      
-      
-           $(document).ready(function(){
-             $("#delete").click(function(){           
-             
-             $.ajax({               
-              type: 'DELETE',
-              contentType:'application/json',
-              dataType:'json',
-              url: 'http://localhost:3000/clients/update/'+ id,
-              success: function(result){
-                
-                  console.info("obisano")
-                  console.log(result)
-                  console.log(result.success)
-                  if(result.success){
-                    alert("Korisnik obrisan")
-                    
-                  } else {
-                   console.log("greska")
-                  }
-              },
-              error: function(result){
-                console.info("greska")
-                this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
-              }
-            })
+        const success= Boolean
+        this.http.delete('http://localhost:3000/clients/update/'+id).subscribe(res => {
+            if(res.status){
+        this.flashMessage.show('Obrisan Korisnik', {cssClass: 'alert-success', timeout: 3000})
+        this.router.navigate(['/all'])  
+      } else {
+        this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
+        
+        }
+      })
+    }
 
-             });
-           });
+
+  //   ngAfterViewInit(){
+
+      
+  //     const id = this.route.snapshot.params['id']
+
+  //       $(document).ready(function(uspelo){
+  //         $("#delete").click(function(){           
+  //         if (confirm("Obrisi korisnika") == true) {
+  //         $.ajax({               
+  //         type: 'DELETE',
+  //         contentType:'application/json',
+  //         dataType:'json',
+  //         url: 'http://localhost:3000/clients/update/'+ id,
+  //         success: function(result, uspelo){
+  //               if(result.success){              
+  //               console.log("uspelo")
+  //             } else {
+  //               console.log("greska")
+  //             }
+  //         },
+  //         error: function(result){
+  //           console.info("greska")
+           
+  //         }
+  //       })}
+        
+
+  //         });
+  //       });
 
          
-     }
+  //    }
 
 
   // onDelete(){
   //   console.log("obrisano")
   //   const id = this.route.snapshot.params['id']
     
-    // this.authService.deleteClient(id).subscribe(data => {
-    //   if(data.success){
-    //     this.flashMessage.show('Korisnik obirsan', {cssClass: 'alert-success', timeout: 3000})
-    //     // this.router.navigate(['/all'])  
-    //   } else {
-    //     this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
+  //   this.authService.deleteClient(id).subscribe(data => {
+  //     if(data.success){
+  //       this.flashMessage.show('Korisnik obirsan', {cssClass: 'alert-success', timeout: 3000})
+  //       // this.router.navigate(['/all'])  
+  //     } else {
+  //       this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
         
-    //     }
-    // })
+  //       }
+  //   })
   // }
 
 }

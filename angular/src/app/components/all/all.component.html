@@ -2,7 +2,7 @@
     
   <div *ngFor="let client of result, let i = index" >
     
-    <h2 class="page-header col-sm-2-offset-2 header-margin" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
+    <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
     <div  [@clientState]="client.state || 'hide'">
     
         <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>

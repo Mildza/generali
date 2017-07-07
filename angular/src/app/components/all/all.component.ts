@@ -17,7 +17,7 @@ import { trigger,
   animations: [
     trigger('clientState', [
      state('hide', style({
-        transform: 'translateY(-100%)',
+        transform: 'translateY(+100%)',
         display:'none',
         opacity:'0'
       })),
@@ -26,8 +26,8 @@ import { trigger,
         display:'block',
         opacity:'1'
       })),
-      transition('hide => show', animate('800ms ease-in')),
-      transition('show => hide', animate('400ms ease-in')),
+      transition('hide => show', animate('500ms ease-in')),
+      transition('show => hide', animate('300ms ease-in')),
       
      
   ])

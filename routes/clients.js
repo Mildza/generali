@@ -149,7 +149,9 @@ router.get('/all', passport.authenticate('jwt', {session:false}), function(req, 
       res.send('Something went wrong')
       next()
     }
-    res.json(client) 
+   
+    res.json(client)
+    
   })
 })
 

@@ -3,6 +3,7 @@
  (submit)="onSubmit()" novalidate>
   <fieldset>
     <h2 class="page-header">PROMENI PODATKE</h2>
+    <div *ngIf="result">  
     <div *ngFor="let client of result">
       <div class="form-group">
         <label  class="col-sm-2 control-label text-left">Ime</label>
@@ -87,7 +88,8 @@
         
     </div>    
     </div> 
-    </div>       
+    </div>
+    </div>        
   </fieldset>
   <div> 
    
@@ -96,7 +98,8 @@
   </div> 
  
 </form>
-<button id="delete"  class="btn btn-primary center-block">Obrisi Korisnika</button>
+<br>
+<button id="delete"  class="btn btn-primary center-block btn-danger" (click)=deleteClient()>Obrisi Korisnika</button>
  <!--<script>
   $(document).ready(function(){
     $('#delete').click( function(){
