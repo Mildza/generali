@@ -4,6 +4,8 @@ const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const config = require('../config/database')
 const User = require('../models/user')
+// var login2 = require('../routes/datausers.js')
+// console.log(login2.datauser)
 
 // Register //
 router.post('/register', (req, res, next) => {
@@ -28,6 +30,7 @@ router.post('/register', (req, res, next) => {
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username
     const password = req.body.password
+    
 
     User.getUserByUsername(username, (err, user) => {
         if(err) throw err
@@ -41,8 +44,20 @@ router.post('/authenticate', (req, res, next) => {
             const token = jwt.sign(user, config.secret, {                   
                 expiresIn : 604800
             })
-            const datauser = module.exports = username
-            
+            var login2 = require('../routes/users.js')
+            login2.datauser = "Milan"
+            console.log(login2.datauser)
+            // this.login.datauser = password
+            // exports.datauser = password || "Vlatko"
+            // const check = module.exports = function() {
+            //     name = "Milan"
+            //     return name;
+            // };
+            // console.log(this.login.datauser)
+            delete require.cache[require.resolve('../routes/users.js')]; 
+            console.warn('cleaning')
+            var login2 = require('../routes/users.js')
+            console.log(login2.datauser)
             res.json({
                 success: true,
                 token: 'JWT ' + token,

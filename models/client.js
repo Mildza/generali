@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
-const login = require('../routes/users.js')
-console.log(login.datauser)
+// const login = require('../routes/users.js')
+var login2 = require('../routes/datausers.js')
+console.log(login2.datauser)
+// login.check()
+// const proba = login.datauser
+// console.log(proba)
+
+// console.log(login3.datauser)
 // Client Schema
 const ClientSchema = mongoose.Schema({
 
