@@ -1,16 +1,19 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
-// const login = require('../routes/users.js')
+var  router = require('../routes/users.js')
 var login2 = require('../routes/datausers.js')
+
 console.log(login2.datauser)
+delete require.cache[require.resolve('../routes/users.js')]
+console.log(router.login.name)
 // login.check()
 // const proba = login.datauser
 // console.log(proba)
 
 // console.log(login3.datauser)
 // Client Schema
-const ClientSchema = mongoose.Schema({
+const Schema = mongoose.Schema({
 
   firstname: {
     type: String
@@ -39,8 +42,9 @@ const ClientSchema = mongoose.Schema({
     type: String
   }
 });
-
-const Client = module.exports = mongoose.model('Client', ClientSchema);
+var mlab = "Marija"
+Client = "Marija"
+var Client = module.exports = mongoose.model(mlab, Schema);
 
 module.exports.addClient = function(newClient, callback){    
   newClient.save(callback);
