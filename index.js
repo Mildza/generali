@@ -39,6 +39,7 @@ app.use(passport.session())
 
 require('./config/passport')(passport)
 
+// app.use('/client', client)
 app.use('/users', users)
 app.use('/clients', clients)
 

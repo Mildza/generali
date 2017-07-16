@@ -15,7 +15,7 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-             <li *ngIf="authService.loggedIn()"><a [routerLink]="['/all']">Klijenti</a></li>
+             <li *ngIf="authService.loggedIn()"><a [routerLink]="['/all']" (click)="Refresh()">Klijenti</a></li>
              <li *ngIf="authService.loggedIn()"><a [routerLink]="['/find']">Trazi</a></li>
              <!--<li *ngIf="authService.loggedIn()"><a [routerLink]="['/search']">Proba</a></li>  -->
             <li *ngIf="authService.loggedIn()"><a [routerLink]="['/dashboard']">Dashboard</a></li>

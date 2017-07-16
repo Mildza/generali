@@ -4,6 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router'
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import { Http } from '@angular/http';
+import {StorageService} from '../../services/storage.service'
 
 declare var $:any;
 
@@ -31,7 +32,7 @@ export class UpdateComponent implements OnInit {
   }   
   recommendation: String  
   note:String
-
+  owner: String
   res:{ 
       [0]   
     }
@@ -63,8 +64,8 @@ export class UpdateComponent implements OnInit {
     private router:Router,
     private fb: FormBuilder,
     private flashMessage: FlashMessagesService,
-    private http: Http
-
+    private http: Http,
+    private storageService: StorageService
     ) {
       
       this.createForm();
@@ -136,7 +137,7 @@ export class UpdateComponent implements OnInit {
     const payday2= this.updateForm.get('policy.payday')    
     const recommendation2= this.updateForm.get('recommendation')    
     const note2= this.updateForm.get('note') 
-  
+    
     const newClient = {
     firstname :firstname2.value,
     lastname : lastname2.value,
@@ -149,6 +150,7 @@ export class UpdateComponent implements OnInit {
     payday: payday2.value,
     recommendation: recommendation2.value,
     note: note2.value,
+    owner:this.storageService.getStorage(),
     _id:id
   }
   
@@ -156,7 +158,7 @@ export class UpdateComponent implements OnInit {
     this.authService.updateClient(id, newClient).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Promenjeni podaci', {cssClass: 'alert-success', timeout: 3000})
-        // this.router.navigate(['/all'])  
+        this.router.navigate(['/all/'+this.owner])  
       } else {
         this.flashMessage.show('Promena nije uspela', {cssClass: 'alert-danger', timeout: 3000})
         
@@ -170,7 +172,7 @@ export class UpdateComponent implements OnInit {
         this.http.delete('http://localhost:3000/clients/update/'+id).subscribe(res => {
             if(res.status){
         this.flashMessage.show('Obrisan Korisnik', {cssClass: 'alert-success', timeout: 3000})
-        this.router.navigate(['/all'])  
+        this.router.navigate(['/all/'+this.owner])  
       } else {
         this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
         

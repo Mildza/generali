@@ -24,6 +24,7 @@ import {ValidateService} from './services/validate.service'
 import {AuthService} from './services/auth.service'
 import {FlashMessagesModule} from 'angular2-flash-messages'
 import {AuthGuard} from './guards/auth.guard';
+import {StorageService} from './services/storage.service'
 
 
 const appRoutes: Routes = [
@@ -33,8 +34,9 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'find', component: FindComponent},
+  {path:'all', component: AllComponent, canActivate:[AuthGuard]},  
   {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
-  {path:'all', component: AllComponent, canActivate:[AuthGuard]},
+  {path:'all/:user', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
   {path: 'update/:id', component: UpdateComponent},  
   {path:'updated', component: UpdatedComponent},  
@@ -65,7 +67,7 @@ const appRoutes: Routes = [
     FlashMessagesModule
     
   ],
-  providers: [ValidateService, AuthService, AuthGuard],
+  providers: [ValidateService, AuthService, AuthGuard, StorageService],
   bootstrap: [AppComponent],
 
 })

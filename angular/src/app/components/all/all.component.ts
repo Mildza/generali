@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
-import {Router} from '@angular/router'
+import {Router, ActivatedRoute, Params} from '@angular/router'
 import { trigger,
         state,
         style,
         animate,
         transition
       } from '@angular/animations';
+import {StorageService} from '../../services/storage.service'
 
 
 @Component({
@@ -36,6 +37,10 @@ import { trigger,
 
 export class AllComponent implements OnInit {
 
+  owner: String
+  newowner: String
+  changeDetected = false
+  
   
    public client = {
      state:"hide"
@@ -53,14 +58,31 @@ export class AllComponent implements OnInit {
   constructor(
     private authService:AuthService,
     private router:Router,
+    private route: ActivatedRoute,
+    private storageService: StorageService
+
+
     
     ){ }
 
+//  const id = this.route.snapshot.params['id']
+
   ngOnInit() {
-    this.authService.getAll()
+        this.owner = this.storageService.getStorage() 
+        this.newowner = this.owner
+    this.authService.getAll(this.newowner)
     .subscribe(result => this.result = result)     
   }  
+ngDoCheck() {
 
+    if (this.owner !== this.newowner) {
+      this.changeDetected = true;
+      console.log('DoCheck: Hero name changed to "$');
+      this.newowner = this.owner
+       this.authService.getAll(this.newowner)
+    .subscribe(result => this.result = result) 
+    }
+}
       clicked(client, index) {        
         this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
                        

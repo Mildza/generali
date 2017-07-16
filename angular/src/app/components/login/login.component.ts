@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
 import {FlashMessagesService} from 'angular2-flash-messages'
+import {StorageService} from '../../services/storage.service'
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService:AuthService,
     private flashMessage: FlashMessagesService ,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
+
     ) { }
 
   ngOnInit() {
@@ -34,7 +37,8 @@ export class LoginComponent implements OnInit {
           'You are loged in', {
           cssClass: 'alert-success', 
           timeout: 3000})
-        this.router.navigate(['/all'])
+          this.storageService.getStorage() 
+        this.router.navigate(['/all/'])
 
       } else {
         this.flashMessage.show(

@@ -2,10 +2,13 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
+const mongoose = require('mongoose');
+
 const config = require('../config/database')
 const User = require('../models/user')
 // var login2 = require('../routes/datausers.js')
 // console.log(login2.datauser)
+global.password = undefined
 
 // Register //
 router.post('/register', (req, res, next) => {
@@ -44,20 +47,7 @@ router.post('/authenticate', (req, res, next) => {
             const token = jwt.sign(user, config.secret, {                   
                 expiresIn : 604800
             })
-            var login2 = require('../routes/users.js')
-            login2.datauser = "Milan"
-            console.log(login2.datauser)
-            // this.login.datauser = password
-            // exports.datauser = password || "Vlatko"
-            // const check = module.exports = function() {
-            //     name = "Milan"
-            //     return name;
-            // };
-            // console.log(this.login.datauser)
-            delete require.cache[require.resolve('../routes/users.js')]; 
-            console.warn('cleaning')
-            var login2 = require('../routes/users.js')
-            console.log(login2.datauser)
+            
             res.json({
                 success: true,
                 token: 'JWT ' + token,
