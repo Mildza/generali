@@ -8,6 +8,7 @@ import { trigger,
         transition
       } from '@angular/animations';
 import {StorageService} from '../../services/storage.service'
+import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -38,8 +39,9 @@ import {StorageService} from '../../services/storage.service'
 export class AllComponent implements OnInit {
 
   owner: String
-  newowner: String
-  changeDetected = false
+  
+  message: any;
+  subscription: Subscription;
   
   
    public client = {
@@ -63,26 +65,24 @@ export class AllComponent implements OnInit {
 
 
     
-    ){ }
+    )
+  {
+    // this.subscription = this.storageService.getMessage().
+    // subscribe(message => { this.message = message; }); 
+    // console.log(this.message)
+}
 
 //  const id = this.route.snapshot.params['id']
 
   ngOnInit() {
         this.owner = this.storageService.getStorage() 
-        this.newowner = this.owner
-    this.authService.getAll(this.newowner)
+        
+    this.authService.getAll(this.owner)
     .subscribe(result => this.result = result)     
   }  
-ngDoCheck() {
 
-    if (this.owner !== this.newowner) {
-      this.changeDetected = true;
-      console.log('DoCheck: Hero name changed to "$');
-      this.newowner = this.owner
-       this.authService.getAll(this.newowner)
-    .subscribe(result => this.result = result) 
-    }
-}
+ 
+
       clicked(client, index) {        
         this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
                        
