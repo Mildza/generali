@@ -105,12 +105,12 @@ deleteClient(id) {
   }
   
 
-  getAll(){
+  getAll(login){
     let headers = new Headers()
     this.loadToken()
     headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
-    return this.http.get('http://localhost:3000/clients/all', {headers: headers})
+    return this.http.get('http://localhost:3000/clients/all/'+login, {headers: headers})
       .map(res => res.json())
   }
 

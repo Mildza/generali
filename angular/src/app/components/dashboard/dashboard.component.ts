@@ -3,6 +3,7 @@ import {ValidateService} from '../../services/validate.service'
 import {AuthService} from '../../services/auth.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {Router} from '@angular/router'
+import {StorageService} from '../../services/storage.service'
 
 @Component({
   selector: 'app-dashboard',
@@ -22,15 +23,20 @@ export class DashboardComponent implements OnInit {
   warning: Date   
   recommendation: String  
   note:String
-  
+  owner: String
+
   constructor(
     private validateService: ValidateService, 
     private authService: AuthService,    
     private flashMessage: FlashMessagesService,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
+
+   this.owner = this.storageService.getStorage()
+    
   }
   onAddSubmit(){
     const client = {
@@ -44,13 +50,14 @@ export class DashboardComponent implements OnInit {
       payday: this.payday,
       warning: this.warning,
       recommendation: this.recommendation,
-      note: this.note
+      note: this.note,
+      owner: this.owner
     }
 
     this.authService.addClient(client).subscribe(data => {
       if(data.success){
         this.flashMessage.show('User added', {cssClass: 'alert-success', timeout: 3000})
-        this.router.navigate(['/all'])  
+        this.router.navigate(['/all/'+this.owner])  
       } else {
         this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
         

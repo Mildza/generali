@@ -3,7 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Client = require('../models/client');
+var Client = require('../models/client');
+// var Client = require('./datausers.js')
 
 
 // Add Client
@@ -23,7 +24,8 @@ router.post('/dashboard', (req, res, next) => {
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,
-    note: req.body.note
+    note: req.body.note,
+    owner: req.body.owner
   });
   // console.log(firstname)
   Client.addClient(newClient, (err, user) => {
@@ -143,8 +145,12 @@ router.get('/search', passport.authenticate('jwt', {session:false}),  (req, res)
   })  
 })
 
-router.get('/all', passport.authenticate('jwt', {session:false}), function(req, res) {
-  Client.getAll((err, client) => {
+router.get('/all/:login', passport.authenticate('jwt', {session:false}), function(req, res) {
+    
+  const user =  req.params.login    
+  
+
+  Client.getAll(user, (err, client) => {
     if(err) {
       res.send('Something went wrong')
       next()

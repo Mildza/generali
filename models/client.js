@@ -1,18 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
-var  router = require('../routes/users.js')
-var login2 = require('../routes/datausers.js')
 
-console.log(login2.datauser)
-delete require.cache[require.resolve('../routes/users.js')]
-console.log(router.login.name)
-// login.check()
-// const proba = login.datauser
-// console.log(proba)
 
-// console.log(login3.datauser)
-// Client Schema
 const Schema = mongoose.Schema({
 
   firstname: {
@@ -38,22 +28,23 @@ const Schema = mongoose.Schema({
   note: {
     type: String
   },
+  owner: {
+    type: String
+  },
   id : {
     type: String
   }
 });
-var mlab = "Marija"
-Client = "Marija"
+
+var mlab = "Client" 
+var Client = "Client"
+
 var Client = module.exports = mongoose.model(mlab, Schema);
 
 module.exports.addClient = function(newClient, callback){    
   newClient.save(callback);
 }
 
-// module.exports.getClients = function(param, callback) {
-//     const query = {param: param}
-//     Client.find({query}, callback)
-// }
 module.exports.getSearch = function(firstname, callback) {
     const query = {firstname: firstname}
     Client.findOne(query, callback)
@@ -63,8 +54,9 @@ module.exports.postFind = function(client, callback) {
     Client.find({firstname: client.firstname} , callback)
 }
 
-module.exports.getAll = function(callback) {
-    Client.find({}, callback)
+module.exports.getAll = function(login, callback) {
+    const query = {owner: login}
+    Client.find(query, callback)
 }
 module.exports.getUpdate = function(client, callback) {
     const query = {_id: client.id}
