@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           cssClass: 'alert-success', 
           timeout: 3000})
           this.storageService.getStorage() 
-        this.router.navigate(['/all/'])
+        this.router.navigate(['/profile'])
 
       } else {
         this.flashMessage.show(

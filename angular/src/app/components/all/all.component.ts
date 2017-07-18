@@ -8,7 +8,6 @@ import { trigger,
         transition
       } from '@angular/animations';
 import {StorageService} from '../../services/storage.service'
-import { Subscription } from 'rxjs/Subscription';
 
 
 @Component({
@@ -29,9 +28,7 @@ import { Subscription } from 'rxjs/Subscription';
         opacity:'1'
       })),
       transition('hide => show', animate('500ms ease-in')),
-      transition('show => hide', animate('300ms ease-in')),
-      
-     
+      transition('show => hide', animate('300ms ease-in'))   
   ])
 ]
 })
@@ -41,20 +38,11 @@ export class AllComponent implements OnInit {
   owner: String
   
   message: any;
-  subscription: Subscription;
   
-  
-   public client = {
+  public client = {
      state:"hide"
-   }
-  //   public client:Array<any> = [{
-  //   state: "hide"
-  // }]
-//   public result:Array<any> = [{
-// -    condition: false,
-// -    state: "hide"
-// -  }]
-
+  }
+  
   result: {}
       
   constructor(
@@ -62,30 +50,19 @@ export class AllComponent implements OnInit {
     private router:Router,
     private route: ActivatedRoute,
     private storageService: StorageService
-
-
-    
-    )
-  {
-    // this.subscription = this.storageService.getMessage().
-    // subscribe(message => { this.message = message; }); 
-    // console.log(this.message)
-}
+   ){ }
 
 //  const id = this.route.snapshot.params['id']
 
   ngOnInit() {
-        this.owner = this.storageService.getStorage() 
-        
+    this.owner = this.storageService.getStorage() 
     this.authService.getAll(this.owner)
-    .subscribe(result => this.result = result)     
+    .subscribe(result => this.result = result) 
   }  
-
- 
-
-      clicked(client, index) {        
-        this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
-                       
-      }     
+    
+    clicked(client, index) {        
+      this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
+                      
+    }     
   
 }

@@ -21,11 +21,9 @@ export class NavbarComponent implements OnInit {
     ) { }
    
   ngOnInit() {
-    this.owner = this.storageService.getStorage()
+    this.owner = this.storageService.getStorage()    
   }
-  Refresh(){
-    this.owner = this.storageService.getStorage()
-  }
+ 
   onLogoutClick(){
     this.authService.logout()
     this.storageService.getStorage()
