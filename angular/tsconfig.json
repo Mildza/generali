@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./public",
+    "outDir": "./dist/out-tsc",
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
@@ -18,4 +18,3 @@
     ]
   }
 }
-// "outDir": "./dist/out-tsc",
