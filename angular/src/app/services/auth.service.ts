@@ -16,35 +16,35 @@ export class AuthService {
   registerUser(user) {
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+    return this.http.post('users/register', user, {headers: headers})
       .map(res => res.json())
   }
 
   addClient(client) {
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/clients/dashboard', client, {headers: headers})
+    return this.http.post('clients/dashboard', client, {headers: headers})
       .map(res => res.json())
   }
 
   // updateClient(client) {
   //   let headers = new Headers()
   //   headers.append('Content-Type', 'application/json')
-  //   return this.http.post('http://localhost:3000/clients/rewrite', client, {headers: headers})
+  //   return this.http.post('clients/rewrite', client, {headers: headers})
   //     .map(res => res.json())
   // }
 
 updateClient(id, client) { 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/clients/update/'+ id, client, {headers: headers})
+    return this.http.post('clients/update/'+ id, client, {headers: headers})
       .map(res => res.json())
   }
 
 deleteClient(id) { 
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.delete('http://localhost:3000/clients/update/'+ id, {headers: headers})
+    return this.http.delete('clients/update/'+ id, {headers: headers})
       .map(res => res.json())
   }
 
@@ -53,7 +53,7 @@ deleteClient(id) {
   
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/clients/updated', client, {headers: headers})
+    return this.http.post('clients/updated', client, {headers: headers})
       .map(res => res.json())
   }
 
@@ -64,7 +64,7 @@ deleteClient(id) {
     // this.loadToken()
     // headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/clients/find', search, {headers: headers})
+    return this.http.post('clients/find', search, {headers: headers})
       .map(res => res.json())
   }
 
@@ -73,7 +73,7 @@ deleteClient(id) {
       // this.loadToken()
       // headers.append('Authorization', this.authToken)
       headers.append('Content-Type', 'application/json')
-      return this.http.get('http://localhost:3000/clients/update/'+ id,{headers: headers})
+      return this.http.get('clients/update/'+ id,{headers: headers})
         .map(res => res.json())
     }
 
@@ -82,7 +82,7 @@ deleteClient(id) {
   authenticateUser(user){
     let headers = new Headers()
     headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+    return this.http.post('users/authenticate', user, {headers: headers})
       .map(res => res.json())
   }
 
@@ -91,7 +91,7 @@ deleteClient(id) {
     this.loadToken()
     headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
-    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    return this.http.get('users/profile', {headers: headers})
       .map(res => res.json())
   }
 
@@ -100,7 +100,7 @@ deleteClient(id) {
     this.loadToken()
     headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
-    return this.http.get('http://localhost:3000/clients/search', {headers: headers})
+    return this.http.get('clients/search', {headers: headers})
       .map(res => res.json())
   }
   
@@ -110,7 +110,7 @@ deleteClient(id) {
     this.loadToken()
     headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
-    return this.http.get('http://localhost:3000/clients/all/'+login, {headers: headers})
+    return this.http.get('clients/all/'+login, {headers: headers})
       .map(res => res.json())
   }
 
