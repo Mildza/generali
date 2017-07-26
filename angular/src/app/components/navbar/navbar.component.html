@@ -15,13 +15,13 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-             <li *ngIf="authService.loggedIn()"><a [routerLink]="['/all']" (click)="Refresh()">Klijenti</a></li>
-             <li *ngIf="authService.loggedIn()"><a [routerLink]="['/find']">Trazi</a></li>
+             <li *ngIf="authService.loggedIn()"><a [routerLink]="['all']">Klijenti</a></li>
+             <li *ngIf="authService.loggedIn()"><a [routerLink]="['find']">Trazi</a></li>
              <!--<li *ngIf="authService.loggedIn()"><a [routerLink]="['/search']">Proba</a></li>  -->
-            <li *ngIf="authService.loggedIn()"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-            <li *ngIf="authService.loggedIn()"><a [routerLink]="['/profile']">Profile</a></li>            
-            <li *ngIf="!authService.loggedIn()"><a [routerLink]="['/login']">LogIn</a></li>
-            <li *ngIf="!authService.loggedIn()"><a [routerLink]="['/register']">Register</a></li>
+            <li *ngIf="authService.loggedIn()"><a [routerLink]="['dashboard']">Dashboard</a></li>
+            <li *ngIf="authService.loggedIn()"><a [routerLink]="['profile']">Profile</a></li>            
+            <li *ngIf="!authService.loggedIn()"><a [routerLink]="['login']">LogIn</a></li>
+            <li *ngIf="!authService.loggedIn()"><a [routerLink]="['register']">Register</a></li>
             <li *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>
           </ul>
         </div><!--/.nav-collapse -->
