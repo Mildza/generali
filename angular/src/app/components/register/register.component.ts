@@ -42,14 +42,22 @@ export class RegisterComponent implements OnInit {
       return false
     }
     // register User //
-    this.authService.registerUser(user).subscribe(data => {
+    
+    this.authService.checkUser(this.username).subscribe(data =>{
       if(data.success){
-        this.flashMessage.show('You are now reistered and can log in', {cssClass: 'alert-success', timeout: 3000})
-        this.router.navigate(['/login'])  
-      } else {
-        this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
-        this.router.navigate(['/register']) 
-        }
+        this.flashMessage.show('username is taken, choose another one', {cssClass: 'alert-danger', timeout: 3000})
+      } else if(!data.succes){
+      this.authService.registerUser(user).subscribe(data => {
+        if(data.success){
+          this.flashMessage.show('You are now reistered and can log in', {cssClass: 'alert-success', timeout: 3000})
+          this.router.navigate(['/login'])  
+        } else {
+          this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
+          this.router.navigate(['/register']) 
+          }
+      })
+      }
     })
+
   }
 }

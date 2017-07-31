@@ -86,6 +86,13 @@ deleteClient(id) {
       .map(res => res.json())
   }
 
+  checkUser(username){
+    let headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    return this.http.post('http://localhost:3000/users/checkuser/' + username, {headers: headers})
+      .map(res => res.json())
+  }
+
   getProfile(){
     let headers = new Headers()
     this.loadToken()

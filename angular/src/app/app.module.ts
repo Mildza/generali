@@ -37,7 +37,10 @@ const appRoutes: Routes = [
   {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
   {path:'all/:user', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
-  {path: 'update/:id', component: UpdateComponent} 
+  {path: 'update/:id', component: UpdateComponent},
+  {path: '404', component: HomeComponent},
+  {path: '**',redirectTo: '/404'},
+  
    
 ]
 
