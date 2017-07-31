@@ -51,7 +51,7 @@ module.exports.getSearch = function(firstname, callback) {
 }
 
 module.exports.postFind = function(client, callback) {
-    Client.find({firstname: client.firstname} , callback)
+    Client.find({owner:client.user,firstname: client.firstname} , callback)
 }
 
 module.exports.getAll = function(login, callback) {

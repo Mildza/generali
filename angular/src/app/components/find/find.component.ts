@@ -3,6 +3,8 @@ import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
 import { trigger, state, style,animate, transition, group} from '@angular/animations'
 import {  Validators } from '@angular/forms'
+import {StorageService} from '../../services/storage.service'
+import {FlashMessagesService} from 'angular2-flash-messages'
 
 declare var $:any;
 
@@ -36,25 +38,33 @@ export class FindComponent implements OnInit {
   id: String
   update : {}
   client: {}
-  
+  owner: String
+  user: String
 
     constructor(
       private authService:AuthService,
-      private router:Router) { }
+      private router:Router,
+      private flashMessage: FlashMessagesService ,
+      private storageService: StorageService
+) { }
 
     ngOnInit() { 
-      
+      this.owner = this.storageService.getStorage()      
     }
 
     onFindSubmit(){
 
        const search = {
-       firstname: this.firstname      
+       firstname: this.firstname,
+       user: this.owner  
+           
       }
-      
-      this.authService.postFind(search)
-      .subscribe(result => this.result = result)
-      
+       this.authService.postFind(search)
+      .subscribe(result => {this.result = result
+      if(!result.success){
+        this.flashMessage.show('Nema takvog klijenta', {cssClass: 'alert-danger', timeout: 3000})
+      } 
+      })
   }
 
    onSelect(client) {     

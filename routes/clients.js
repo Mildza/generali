@@ -106,7 +106,8 @@ router.post('/find', (req, res, next) => {
   
   // console.log(req.body.firstname)
   const client = {
-    firstname: req.body.firstname
+    firstname: req.body.firstname,
+    user: req.body.user
   }
    
   Client.postFind(client, (err, client) => {
