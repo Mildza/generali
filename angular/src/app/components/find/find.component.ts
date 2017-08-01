@@ -40,6 +40,7 @@ export class FindComponent implements OnInit {
   client: {}
   owner: String
   user: String
+  count:number
 
     constructor(
       private authService:AuthService,
@@ -49,7 +50,8 @@ export class FindComponent implements OnInit {
 ) { }
 
     ngOnInit() { 
-      this.owner = this.storageService.getStorage()      
+      this.owner = this.storageService.getStorage()
+      this.count = 0      
     }
 
     onFindSubmit(){
@@ -60,10 +62,18 @@ export class FindComponent implements OnInit {
            
       }
        this.authService.postFind(search)
-      .subscribe(result => {this.result = result
-      if(!result.success){
+      .subscribe(result => {
+      if(result.success){
         this.flashMessage.show('Nema takvog klijenta', {cssClass: 'alert-danger', timeout: 3000})
-      } 
+        this.result = 0
+        this.count = 0
+        
+      } else {
+        this.result = result
+        this.count = Object.keys(this.result).length;
+        console.log(this.count)
+        
+      }
       })
   }
 

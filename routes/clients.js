@@ -105,18 +105,21 @@ router.post('/update/:id', (req, res, next) => {
 router.post('/find', (req, res, next) => {
   
   // console.log(req.body.firstname)
-  const client = {
+  const search = {
     firstname: req.body.firstname,
     user: req.body.user
   }
    
-  Client.postFind(client, (err, client) => {
-    if(err){
-      res.json({success: false, msg:'Failed search'});
-      next()
+  Client.postFind(search, (err, client) => {
+    if(err) throw err
+      
+    if(client.length){
+      res.json(client)  
+    } else {
+       res.json({success: true, msg:'Failed search'});
     }
-    res.json(client)
     
+   
   });
 });
 

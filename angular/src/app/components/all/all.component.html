@@ -4,50 +4,69 @@
     
     <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
     <div  [@clientState]="client.state || 'hide'">
-    
-        <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>
-        <div class="col-sm-9 well well-sm white field-margin" name="policy">
-            {{client.policy.describe}}
+
+        <div *ngIf=client.policy.describe>
+            <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>
+            <div class="col-sm-9 well well-sm white field-margin" name="policy">
+                {{client.policy.describe}}
+            </div>
         </div>    
-    
-        <label  for="value" class="col-sm-2 control-label label-padding">Vrednost:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.policy.value}}
+        
+        <div *ngIf=client.policy.value>
+            <label  for="value" class="col-sm-2 control-label label-padding">Vrednost:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.policy.value}}
+            </div>
         </div>
 
-        <label  for="payday" class="col-sm-2 control-label label-padding">Dan uplate:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.policy.payday}}
-        </div>
-    
-        <label  for="warning" class="col-sm-2 control-label label-padding">Upozorenje:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.policy.warning}}
+        <div *ngIf=client.policy.value>
+            <label  for="payday" class="col-sm-2 control-label label-padding">Dan uplate:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.policy.payday}}
+            </div>
         </div>
 
-        <label  for="recommendation" class="col-sm-2 control-label label-padding">Preporuka:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.recommendation}}
+        <div *ngIf=client.policy.warning>
+            <label  for="warning" class="col-sm-2 control-label label-padding">Upozorenje:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.policy.warning}}
+            </div>
         </div>
 
-        <label  for="phone" class="col-sm-2 control-label label-padding">Telefon:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.phone}}
+        <div *ngIf=client.recommendation>
+            <label  for="recommendation" class="col-sm-2 control-label label-padding">Preporuka:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.recommendation}}
+            </div>
         </div>
-        <label  for="city" class="col-sm-2 control-label label-padding">Grad:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.address.city}}
+        <div *ngIf=client.phone>
+            <label  for="phone" class="col-sm-2 control-label label-padding">Telefon:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.phone}}
+            </div>
         </div>
 
-        <label  for="payday" class="col-sm-2 control-label label-padding">Ulica:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.address.street}}
+        <div *ngIf=client.address.city>
+            <label  for="city" class="col-sm-2 control-label label-padding">Grad:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.address.city}}
+            </div>
         </div>
 
-        <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
-        <div class="col-sm-9 well well-sm white field-margin">
-            {{client.note}}
+        <div *ngIf=client.address.street>
+            <label  class="col-sm-2 control-label label-padding">Ulica:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.address.street}}
+            </div>
         </div>
+
+        <div *ngIf=client.note>
+            <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.note}}
+            </div>
+        </div>
+
     </div>
     </div>
 </div>

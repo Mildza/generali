@@ -3,26 +3,33 @@
 <form class="form-horizontal" (submit)="onFindSubmit()">
   
   <fieldset>
-      <h2 class="page-header">PRETRAGA KLIJENATA</h2>
+      <h2 class="page-header text-center">PRETRAGA KLIJENATA</h2>
       
       <div class="form-group">
-        <label for="firstname" class="col-sm-2 control-label text-left">Ime</label>
-        <div class="col-sm-8">
-          <input type="text" [(ngModel)]="firstname" name="firstname" class="form-control" id="firstname" placeholder="Ime">
+        <!-- <label for="firstname" class="col-sm-2 control-label text-left">Ime</label> -->
+        <div class="col-sm-5 ">
+          <input type="text" [(ngModel)]="firstname" name="firstname" class="form-control" 
+          id="firstname" placeholder="Ime" autofocus>
         </div>
+        <div class="col-sm-5">
+          <ul class="nav nav-pills">
+            <li ><a class="a-padding">Nadjeno Klijenata <span class="badge">{{count}}</span></a></li>
+          </ul>
+        </div>
+       <div class="col-sm-2">
+        <input type="submit" value="Trazi" size="50"
+        class="btn btn-primary center-block search-box" >
+   
+      </div>     
+
       </div>
           
   </fieldset>
-  <div>
-    <input type="submit" value="  Trazi   "
-    class="btn btn-primary center-block"
-    
-    >
-  </div>  
+  
 </form>
 </div>
 <div *ngIf="result">
- 
+  
 <div *ngFor="let client of result" [@itemAnim]> 
    <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname}} {{client.lastname}}</h2>
     <div class="col-md-8 col-md-offset-3"> 
@@ -100,16 +107,17 @@
          {{client.note}}
       </div>
     </div>
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
+    <div class="col-md-12 "> 
+      <!-- <div class="col-md-2 well well-sm black field-margin">
         id:
       </div>
-      <div class="col-md-6 well well-sm hand white field-margin" (click)="onSelect(client)"
+       <div class="col-md-6 well well-sm hand white field-margin" (click)="onSelect(client)"
       data-toggle="tooltip" data-placement="top" title="Izmeni Klijenta"
       >
          {{client._id}}         
-      </div>
-          
+      </div>  -->
+      <button id="delete"  class="btn btn-primary center-block btn-info btn-find" (click)=onSelect(client)>Uredi Klijenta</button>
+    
     </div>
   
 </div>

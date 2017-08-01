@@ -1,4 +1,21 @@
 .hand {
   cursor: pointer; 
-  cursor: hand;
+  
 }
+
+.search-box {
+  padding:10px 30px;
+  }
+
+.btn-find {
+  margin-bottom: 20px;
+}
+
+.nav-pills>li {
+    float: none;
+}
+
+.a-padding {
+  padding-left: 20px;
+}
+
