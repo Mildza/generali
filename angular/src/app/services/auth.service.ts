@@ -142,6 +142,7 @@ deleteClient(id) {
     this.user = null
     localStorage.clear()
   }
-    
+
+  
 
 }

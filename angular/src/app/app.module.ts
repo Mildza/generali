@@ -24,6 +24,7 @@ import {AuthService} from './services/auth.service'
 import {FlashMessagesModule} from 'angular2-flash-messages'
 import {AuthGuard} from './guards/auth.guard';
 import {StorageService} from './services/storage.service'
+import {CapitalizePipe} from './pipes/capitalize.pipe'
 
 
 const appRoutes: Routes = [
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     SearchComponent,
     AllComponent,
     FindComponent,
-    UpdateComponent 
+    UpdateComponent,
+    CapitalizePipe 
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    
     
   ],
   providers: [ValidateService, AuthService, AuthGuard, StorageService],

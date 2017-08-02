@@ -31,7 +31,7 @@
 <div *ngIf="result">
   
 <div *ngFor="let client of result" [@itemAnim]> 
-   <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname}} {{client.lastname}}</h2>
+   <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
     <div class="col-md-8 col-md-offset-3"> 
       <div class="col-md-2 well well-sm black field-margin ">
         Polisa:

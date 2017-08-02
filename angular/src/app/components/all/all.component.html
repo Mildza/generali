@@ -2,7 +2,7 @@
     
   <div *ngFor="let client of result, let i = index" >
     
-    <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{client.firstname}} {{client.lastname}}</h2>
+    <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
     <div  [@clientState]="client.state || 'hide'">
 
         <div *ngIf=client.policy.describe>

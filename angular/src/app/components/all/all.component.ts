@@ -8,6 +8,7 @@ import { trigger,
         transition
       } from '@angular/animations';
 import {StorageService} from '../../services/storage.service'
+import {CapitalizePipe} from '../../pipes/capitalize.pipe'
 
 
 @Component({
@@ -59,6 +60,10 @@ export class AllComponent implements OnInit {
     this.authService.getAll(this.owner)
     .subscribe(result => this.result = result) 
   }  
+
+  upp(string){
+    return string.toUpperCase()
+  }
     
     clicked(client, index) {        
       this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');

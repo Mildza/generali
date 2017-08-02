@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit {
   }
   onAddSubmit(){
     const client = {
-      firstname: this.firstname,
-      lastname: this.lastname,
+      firstname:  this.validateService.toLowerCase(this.firstname),
+      lastname: this.validateService.toLowerCase(this.lastname),
       phone: this.phone,      
       street: this.street,
       city: this.city,

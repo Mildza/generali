@@ -5,6 +5,7 @@ import { trigger, state, style,animate, transition, group} from '@angular/animat
 import {  Validators } from '@angular/forms'
 import {StorageService} from '../../services/storage.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
+import {ValidateService} from '../../services/validate.service'
 
 declare var $:any;
 
@@ -46,7 +47,8 @@ export class FindComponent implements OnInit {
       private authService:AuthService,
       private router:Router,
       private flashMessage: FlashMessagesService ,
-      private storageService: StorageService
+      private storageService: StorageService,
+      private validateService: ValidateService
 ) { }
 
     ngOnInit() { 
@@ -57,10 +59,10 @@ export class FindComponent implements OnInit {
     onFindSubmit(){
 
        const search = {
-       firstname: this.firstname,
-       user: this.owner  
-           
+       firstname: this.validateService.toLowerCase(this.firstname),
+       user: this.owner    
       }
+      
        this.authService.postFind(search)
       .subscribe(result => {
       if(result.success){
