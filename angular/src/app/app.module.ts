@@ -25,6 +25,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages'
 import {AuthGuard} from './guards/auth.guard';
 import {StorageService} from './services/storage.service'
 import {CapitalizePipe} from './pipes/capitalize.pipe'
+import {DatePipe} from './pipes/date.pipe'
 
 
 const appRoutes: Routes = [
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     AllComponent,
     FindComponent,
     UpdateComponent,
-    CapitalizePipe 
+    CapitalizePipe,
+    DatePipe 
   ],
   imports: [
     BrowserModule,
