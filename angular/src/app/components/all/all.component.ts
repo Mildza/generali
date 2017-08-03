@@ -9,6 +9,7 @@ import { trigger,
       } from '@angular/animations';
 import {StorageService} from '../../services/storage.service'
 import {CapitalizePipe} from '../../pipes/capitalize.pipe'
+import {DatePipe} from '../../pipes/date.pipe'
 
 
 @Component({

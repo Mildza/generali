@@ -22,7 +22,7 @@
         <div *ngIf=client.policy.value>
             <label  for="payday" class="col-sm-2 control-label label-padding">Dan uplate:</label>
             <div class="col-sm-9 well well-sm white field-margin">
-                {{client.policy.payday}}
+                {{client.policy.payday | date }}
             </div>
         </div>
 
