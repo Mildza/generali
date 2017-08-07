@@ -13,7 +13,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchComponent } from './components/search/search.component';
 import { AllComponent } from './components/all/all.component';
 import { FindComponent } from './components/find/find.component';
 import { UpdateComponent } from './components/update/update.component';
@@ -36,7 +35,6 @@ const appRoutes: Routes = [
   {path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path:'find', component: FindComponent},
   {path:'all', component: AllComponent, canActivate:[AuthGuard]},  
-  {path:'search', component: SearchComponent, canActivate:[AuthGuard]},
   {path:'all/:user', component: AllComponent, canActivate:[AuthGuard]},
   {path:'update', component: UpdateComponent},
   {path: 'update/:id', component: UpdateComponent},
@@ -55,7 +53,6 @@ const appRoutes: Routes = [
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    SearchComponent,
     AllComponent,
     FindComponent,
     UpdateComponent,
