@@ -40,28 +40,42 @@
         <input type="text" [(ngModel)]="describe" name="describe" class="form-control" id="describe" placeholder="Polisa">      
     </div>
     </div>
-    <div class="form-group">
+
+    <div class="form-group padding-left">
       <label for="value" class="col-sm-2 control-label ">Vrednost</label>
       <div class="col-sm-8">
         <input type="number" [(ngModel)]="value" name="value" class="form-control" id="value" placeholder="Vrednost">      
     </div>
     </div>
+
+    <div class="form-group padding-left">
+      <label for="idpolicy" class="col-sm-2 control-label ">Broj</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="idpolicy" name="idpolicy" class="form-control" id="idpolicy" placeholder="Broj Polise">      
+    </div>
+    </div>    
  
-    <div class="form-group">
-       
-      <label for="payday" class="col-sm-2 control-label ">Dan uplate</label>
+    <div class="form-group padding-left">       
+      <label for="startday" class="col-sm-2 control-label ">Početak</label>
       <div class="col-sm-2">
-        <input type="number" [(ngModel)]="day" name="day"  maxlength="2" size="6" class="form-control" id="payday" placeholder="20">      
+        <input type="number" [(ngModel)]="day" name="day"  maxlength="2" size="6" min="1" max="31" class="form-control" id="payday" placeholder="20">      
     </div>
       <div class="col-sm-2">
-        <input type="number" [(ngModel)]="month" name="month" maxlength="2" size="6" class="form-control" id="payday" placeholder="09">      
+        <input type="number" [(ngModel)]="month" name="month" maxlength="2" size="6" min="1" max="12" class="form-control" id="payday" placeholder="09">      
     </div>
       <div class="col-sm-2">
         <input type="number" [(ngModel)]="year" name="year" maxlength="4" size="6" class="form-control" id="payday" placeholder="2017">      
     </div>
     </div>
+
+    <div class="form-group padding-left">
+      <label for="duration" class="col-sm-2 control-label ">Trajanje</label>
+      <div class="col-sm-8">
+        <input type="text" [(ngModel)]="duration" name="duration" class="form-control" id="duration" placeholder="Broj Polise">      
+    </div>
+    </div>  
   
-    <div class="form-group">
+    <div class="form-group padding-left">
       <label for="warning" class="col-sm-2 control-label ">Upozorenje</label>
       <div class="col-sm-8">
         <input type="text" [(ngModel)]="warning" name="warning" class="form-control" id="warning" placeholder="Upozorenje">      

@@ -19,8 +19,10 @@ export class DashboardComponent implements OnInit {
   street: String
   city: String
   describe: String
+  idpolicy: Number
   value: Number
-  payday: Date
+  startdate: Date
+  duration: Number
   warning: Date   
   recommendation: String  
   note:String
@@ -28,6 +30,7 @@ export class DashboardComponent implements OnInit {
   day: String
   month: String
   year: String
+
 
   constructor(
     private validateService: ValidateService, 
@@ -58,15 +61,17 @@ export class DashboardComponent implements OnInit {
       street: this.street,
       city: this.city,
       describe: this.describe,
+      idpolicy:this.idpolicy,
       value: this.value,
-      payday: this.day+"/"+this.month+"/"+this.year,
+      startdate: this.day+"/"+this.month+"/"+this.year,
+      duration:this.duration,
       warning: this.warning,
       recommendation: this.recommendation,
       note: this.note,
       owner: this.owner
       
     } 
-  
+    console.log(client.city)
 
     this.authService.addClient(client).subscribe(data => {
       if(data.success){

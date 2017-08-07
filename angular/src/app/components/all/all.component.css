@@ -5,8 +5,8 @@ h2 {
 }
 
 .label-padding{
-  padding:9px;
-  margin:0px;  
+  padding:11px;
+  
 }
 
 .header-margin{
@@ -16,3 +16,30 @@ h2 {
 .page-header {
     border-bottom: 1px solid #cccccc;
 }
+
+.padding-left{
+    padding-left: 100px;
+    padding-right: 10px; 
+  }
+
+@media (max-width: 768px){
+    .padding-left{
+    padding-left: 50px;
+    padding-right: 2px; 
+    }
+    .label-padding {
+      padding-left: 0px;
+      padding-bottom: 0px;
+    }
+
+  .field-margin{
+      margin-bottom:1px;    
+    }
+    .btn-find {
+    margin-top: 20px; 
+    }
+  .col-sm-5 {
+    margin-bottom: 10px;
+  }
+}
+

@@ -18,9 +18,11 @@ const Schema = mongoose.Schema({
   },
   policy : {
       describe: String,
+      idpolicy: String,
       value: Number,
-      payday: Date,
-      warning: String
+      startdate: Date, //payday
+      duration: String,
+      warning: String // 
   },  
   recommendation: {
     type: String

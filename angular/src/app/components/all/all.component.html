@@ -12,23 +12,37 @@
             </div>
         </div>    
         
-        <div *ngIf=client.policy.value>
-            <label  for="value" class="col-sm-2 control-label label-padding">Vrednost:</label>
-            <div class="col-sm-9 well well-sm white field-margin">
+        <div *ngIf=client.policy.value class="padding-left">
+            <label  for="value" class="col-sm-3 control-label label-padding">Vrednost:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.value}}
             </div>
         </div>
 
-        <div *ngIf=client.policy.value>
-            <label  for="payday" class="col-sm-2 control-label label-padding">Dan uplate:</label>
-            <div class="col-sm-9 well well-sm white field-margin">
-                {{client.policy.payday | date }}
+        <div *ngIf=client.policy.idpolicy class="padding-left">
+            <label  for="idpolicy" class="col-sm-3 control-label label-padding">Broj:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.idpolicy }}
+            </div> 
+        </div>
+
+        <div *ngIf=client.policy.startdate class="padding-left">
+            <label  for="startday" class="col-sm-3 control-label label-padding">Pocetak:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.startdate | date }}
             </div>
         </div>
 
-        <div *ngIf=client.policy.warning>
-            <label  for="warning" class="col-sm-2 control-label label-padding">Upozorenje:</label>
-            <div class="col-sm-9 well well-sm white field-margin">
+        <div *ngIf=client.policy.duration class="padding-left">
+            <label  for="duration" class="col-sm-3 control-label label-padding">Trajanje:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.duration }}
+            </div>
+        </div>
+
+        <div *ngIf=client.policy.warning class="padding-left"> 
+            <label  for="warning" class="col-sm-3 control-label label-padding">Upozorenje:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.warning}}
             </div>
         </div>

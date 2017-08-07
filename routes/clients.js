@@ -19,8 +19,10 @@ router.post('/dashboard', (req, res, next) => {
     },
     policy: {
       describe: req.body.describe,
+      idpolicy: req.body.idpolicy,
       value: req.body.value,
-      payday: req.body.payday,
+      startdate: req.body.startdate,
+      duration: req.body.duration,
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,
@@ -46,10 +48,12 @@ router.post('/rewrite', (req, res, next) => {
       street: req.body.street,
       city: req.body.city
     },
-    policy: {
+   policy: {
       describe: req.body.describe,
+      idpolicy: req.body.describe,
       value: req.body.value,
-      payday: req.body.payday,
+      startdate: req.body.startdate,
+      duration: req.body.duration,
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,
@@ -81,8 +85,10 @@ router.post('/update/:id', (req, res, next) => {
     },
     policy: {
       describe: req.body.describe,
-      value: req.body.values,
-      payday: req.body.payday,
+      idpolicy: req.body.describe,
+      value: req.body.value,
+      startdate: req.body.startdate,
+      duration: req.body.duration,
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,
@@ -123,31 +129,7 @@ router.post('/find', (req, res, next) => {
   });
 });
 
-router.get('/search', passport.authenticate('jwt', {session:false}),  (req, res) => { 
-    
-    const firstname = "Kalina"
-    Client.getSearch(firstname, (err, client) => {
-      if(err) throw err
-      if(!client) {
-          return res.json({success: false, msg:'User not found'})
-      }       
-      res.json({                              
-          client: {                        
-            firstname: client.firstname,
-            lastname: client.lastname,
-            street: client.address.street,
-            city: client.address.city,
-            phone: client.phone,
-            describe: client.policy.describe,
-            value: client.policy.value,
-            payday: client.policy.payday,
-            warning: client.policy.warning,
-            recommendation: client.recommendation,
-            note: client.note                                
-          }
-      })   
-  })  
-})
+
 
 router.get('/all/:login', passport.authenticate('jwt', {session:false}), function(req, res) {
     
@@ -195,10 +177,12 @@ router.post('/updated', function(req, res) {
       street: req.body.street,
       city: req.body.city
     },
-    policy: {
+   policy: {
       describe: req.body.describe,
-      value: req.body.values,
-      payday: req.body.payday,
+      idpolicy: req.body.describe,
+      value: req.body.value,
+      startdate: req.body.startdate,
+      duration: req.body.duration,
       warning: req.body.warning
     },       
     recommendation: req.body.recommendation,

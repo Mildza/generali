@@ -5,6 +5,7 @@ import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import { Http } from '@angular/http';
 import {StorageService} from '../../services/storage.service'
+import * as moment from 'moment';
 
 declare var $:any;
 
@@ -46,8 +47,10 @@ export class UpdateComponent implements OnInit {
       city: String}
     policy:{
       describe: String
+      idpolicy: String
       values: Number
-      payday: Date
+      startdate: Date
+      duration: String
       warning: Date
     }   
     recommendation: String  
@@ -88,8 +91,10 @@ export class UpdateComponent implements OnInit {
       }),
       policy: this.fb.group({
         describe: '',
+        idpolicy:'',
         values: '',
-        payday: '',
+        startdate: '',
+        duration: '',
         warning: ''
       }),
       recommendation: '',
@@ -111,8 +116,11 @@ export class UpdateComponent implements OnInit {
         },
         policy:{
           describe:this.result[0].policy.describe,
+          idpolicy:this.result[0].policy.idpolicy,
           values:this.result[0].policy.value,
-          payday:this.result[0].policy.payday,
+          startdate:(moment(this.result[0].policy.startdate).format('L')),
+        
+          duration:this.result[0].policy.duration,          
           warning:this.result[0].policy.warning 
         },
         recommendation:this.result[0].recommendation,
@@ -132,9 +140,11 @@ export class UpdateComponent implements OnInit {
     const street2= this.updateForm.get('address.street')     
     const city2= this.updateForm.get('address.city')
     const describe2= this.updateForm.get('policy.describe')
+    const idpolicy2= this.updateForm.get('policy.idpolicy')
     const values2= this.updateForm.get('policy.values')
-    const warning2= this.updateForm.get('policy.warning')    
-    const payday2= this.updateForm.get('policy.payday')    
+    const startdate2= this.updateForm.get('policy.startdate')
+    const duration2= this.updateForm.get('policy.duration')    
+    const warning2= this.updateForm.get('policy.warning')
     const recommendation2= this.updateForm.get('recommendation')    
     const note2= this.updateForm.get('note') 
     
@@ -146,8 +156,9 @@ export class UpdateComponent implements OnInit {
     city: city2.value,
     describe: describe2.value,
     values: values2.value,
-    warning: warning2.value,
-    payday: payday2.value,
+    startdate:startdate2.value,
+    duration: duration2.value,
+    warning: warning2.value,    
     recommendation: recommendation2.value,
     note: note2.value,
     owner:this.storageService.getStorage(),

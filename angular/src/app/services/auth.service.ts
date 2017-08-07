@@ -49,13 +49,13 @@ deleteClient(id) {
   }
 //   return this.http.post('http://localhost:3000/clients/rewrite', client, {headers: headers})
 
-  updateClient2(client) {
+  // updateClient2(client) {
   
-    let headers = new Headers()
-    headers.append('Content-Type', 'application/json')
-    return this.http.post('http://localhost:3000/clients/updated', client, {headers: headers})
-      .map(res => res.json())
-  }
+  //   let headers = new Headers()
+  //   headers.append('Content-Type', 'application/json')
+  //   return this.http.post('http://localhost:3000/clients/updated', client, {headers: headers})
+  //     .map(res => res.json())
+  // }
 
 
   postFind(search){
@@ -99,15 +99,6 @@ deleteClient(id) {
     headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
-      .map(res => res.json())
-  }
-
-  getSearch(){
-    let headers = new Headers()
-    this.loadToken()
-    headers.append('Authorization', this.authToken)
-    headers.append('Content-Type', 'application/json')
-    return this.http.get('http://localhost:3000/clients/search', {headers: headers})
       .map(res => res.json())
   }
   

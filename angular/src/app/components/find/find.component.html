@@ -28,85 +28,86 @@
   
 </form>
 </div>
-<div *ngIf="result">
+<div *ngIf="result" class="col-md-7 col-md-offset-3">
   
 <div *ngFor="let client of result" [@itemAnim]> 
    <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin ">
-        Polisa:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.policy.describe}}
-      </div>
-    </div>
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Vrednost:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.policy.value}}
-      </div>
-    </div>
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Dan uplate:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.policy.payday}}
-      </div>
-    </div>
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Upozorenje:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.policy.warning}}
-      </div>
-    </div>
-      <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Preporuka:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.recommendation}}
-      </div>
-    </div>  
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Telefon:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.phone}}
-      </div>
-    </div>
     
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Grad:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.address.city}}
-      </div>
-    </div>
-    
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Ulica:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.address.street}}
-      </div>
-    </div>
-      
-    <div class="col-md-8 col-md-offset-3"> 
-      <div class="col-md-2 well well-sm black field-margin">
-        Zabeleska:
-      </div>
-      <div class="col-md-6 well well-sm white field-margin">
-         {{client.note}}
-      </div>
-    </div>
+    <div *ngIf=client.policy.describe>
+            <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>
+            <div class="col-sm-9 well well-sm white field-margin" name="policy">
+                {{client.policy.describe}}
+            </div>
+        </div>    
+        
+        <div *ngIf=client.policy.value class="padding-left">
+            <label  for="value" class="col-sm-3 control-label label-padding">Vrednost:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.value}}
+            </div>
+        </div>
+
+        <div *ngIf=client.policy.idpolicy class="padding-left">
+            <label  for="idpolicy" class="col-sm-3 control-label label-padding">Broj:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.idpolicy }}
+            </div> 
+        </div>
+
+        <div *ngIf=client.policy.startdate class="padding-left">
+            <label  for="startday" class="col-sm-3 control-label label-padding">Pocetak:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.startdate | date }}
+            </div>
+        </div>
+
+        <div *ngIf=client.policy.duration class="padding-left">
+            <label  for="duration" class="col-sm-3 control-label label-padding">Trajanje:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.duration }}
+            </div>
+        </div>
+
+        <div *ngIf=client.policy.warning class="padding-left"> 
+            <label  for="warning" class="col-sm-3 control-label label-padding">Upozorenje:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{client.policy.warning}}
+            </div>
+        </div>
+
+        <div *ngIf=client.recommendation>
+            <label  for="recommendation" class="col-sm-2 control-label label-padding">Preporuka:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.recommendation}}
+            </div>
+        </div>
+        <div *ngIf=client.phone>
+            <label  for="phone" class="col-sm-2 control-label label-padding">Telefon:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.phone}}
+            </div>
+        </div>
+
+        <div *ngIf=client.address.city>
+            <label  for="city" class="col-sm-2 control-label label-padding">Grad:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.address.city}}
+            </div>
+        </div>
+
+        <div *ngIf=client.address.street>
+            <label  class="col-sm-2 control-label label-padding">Ulica:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.address.street}}
+            </div>
+        </div>
+
+        <div *ngIf=client.note>
+            <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.note}}
+            </div>
+        </div>
     <div class="col-md-12 "> 
       <!-- <div class="col-md-2 well well-sm black field-margin">
         id:
