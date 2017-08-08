@@ -28,8 +28,10 @@ export class UpdateComponent implements OnInit {
   policy:{
     describe: String
     values: Number
-    payday: Date
-    warning: Date
+    payday: String
+    warning: String
+    today: String
+    stardate: Date
   }   
   recommendation: String  
   note:String
@@ -37,6 +39,12 @@ export class UpdateComponent implements OnInit {
   res:{ 
       [0]   
     }
+    day:String
+    month: String
+    year: String
+    
+    split: any
+    startdate:String
 
   result:{
     lastname: String
@@ -52,6 +60,9 @@ export class UpdateComponent implements OnInit {
       startdate: Date
       duration: String
       warning: Date
+      day:String
+      year:String
+      month: String
     }   
     recommendation: String  
     note:String
@@ -79,6 +90,14 @@ export class UpdateComponent implements OnInit {
      
       
    }
+
+   splitdate(spliter){
+    
+     var split = spliter.split("/");     
+      this.month = split[0]
+      this.day = split[1]
+      this.year = split[2]
+   }
   
   createForm() {
     this.updateForm = this.fb.group({
@@ -95,7 +114,10 @@ export class UpdateComponent implements OnInit {
         values: '',
         startdate: '',
         duration: '',
-        warning: ''
+        warning: '',
+        day:"",
+        month:"",
+        year:""
       }),
       recommendation: '',
       note: '',
@@ -105,10 +127,12 @@ export class UpdateComponent implements OnInit {
        this.authService.getUpdate(id)
       .subscribe(res => {
         this.result = res        
+        this.startdate=(moment(this.result[0].policy.startdate).format('L')),
+        this.splitdate(this.startdate)
         
         this.updateForm.patchValue({
-        firstname:this.result[0].firstname,
-        lastname:this.result[0].lastname,
+        firstname:this.result[0].firstname.toUpperCase(),
+        lastname:this.result[0].lastname.toUpperCase(),
         phone:this.result[0].phone,
         address:{
           street:this.result[0].address.street,
@@ -118,8 +142,10 @@ export class UpdateComponent implements OnInit {
           describe:this.result[0].policy.describe,
           idpolicy:this.result[0].policy.idpolicy,
           values:this.result[0].policy.value,
-          startdate:(moment(this.result[0].policy.startdate).format('L')),
-        
+          
+          day:this.day,
+          month:this.month,
+          year:this.year,
           duration:this.result[0].policy.duration,          
           warning:this.result[0].policy.warning 
         },
@@ -141,22 +167,24 @@ export class UpdateComponent implements OnInit {
     const city2= this.updateForm.get('address.city')
     const describe2= this.updateForm.get('policy.describe')
     const idpolicy2= this.updateForm.get('policy.idpolicy')
-    const values2= this.updateForm.get('policy.values')
-    const startdate2= this.updateForm.get('policy.startdate')
+    const value2= this.updateForm.get('policy.values')
+    const day2= this.updateForm.get('policy.day')
+    const month2= this.updateForm.get('policy.month')
+    const year2 = this.updateForm.get('policy.year')
     const duration2= this.updateForm.get('policy.duration')    
     const warning2= this.updateForm.get('policy.warning')
     const recommendation2= this.updateForm.get('recommendation')    
     const note2= this.updateForm.get('note') 
     
     const newClient = {
-    firstname :firstname2.value,
-    lastname : lastname2.value,
+    firstname :firstname2.value.toLowerCase(),
+    lastname : lastname2.value.toLowerCase(),
     phone:  phone2.value,
     street: street2.value,      
     city: city2.value,
     describe: describe2.value,
-    values: values2.value,
-    startdate:startdate2.value,
+    value: value2.value,
+    startdate:month2.value+"/"+day2.value+"/"+year2.value,
     duration: duration2.value,
     warning: warning2.value,    
     recommendation: recommendation2.value,

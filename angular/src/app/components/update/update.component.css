@@ -1,0 +1,15 @@
+.padding-left{
+    padding-left: 110px;
+    padding-right: 23px; 
+     
+    
+}
+@media (max-width: 768px){
+    .padding-left{
+    padding-left: 50px;
+    padding-right: 2px; 
+     
+    
+}
+
+}

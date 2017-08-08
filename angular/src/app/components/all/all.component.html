@@ -1,8 +1,20 @@
-<div *ngIf="result" class="col-md-7 col-md-offset-3">
+<div *ngIf="result" class=" col-lg-7 col-md-offset-2">
     
   <div *ngFor="let client of result, let i = index" >
     
-    <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
+    <!-- <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}
+        <span><h4> {{client.policy.describe}} </h4></span></h2>
+     -->
+    <div class= "col-lg-12" (click)="clicked(clint,i)">
+        <div class= "col-sm-5 center-block" >
+            <h2 >{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
+        </div>
+        <div class= "col-sm-6">
+           <h4> {{client.policy.describe}}</h4>
+        </div>
+    </div>
+
+
     <div  [@clientState]="client.state || 'hide'">
 
         <div *ngIf=client.policy.describe>
@@ -13,36 +25,36 @@
         </div>    
         
         <div *ngIf=client.policy.value class="padding-left">
-            <label  for="value" class="col-sm-3 control-label label-padding">Vrednost:</label>
-            <div class="col-sm-8 well well-sm white field-margin">
+            <label  for="value" class="col-sm-2 control-label label-padding">Vrednost:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
                 {{client.policy.value}}
             </div>
         </div>
 
         <div *ngIf=client.policy.idpolicy class="padding-left">
-            <label  for="idpolicy" class="col-sm-3 control-label label-padding">Broj:</label>
-            <div class="col-sm-8 well well-sm white field-margin">
+            <label  for="idpolicy" class="col-sm-2 control-label label-padding">Broj:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
                 {{client.policy.idpolicy }}
             </div> 
         </div>
 
         <div *ngIf=client.policy.startdate class="padding-left">
-            <label  for="startday" class="col-sm-3 control-label label-padding">Pocetak:</label>
-            <div class="col-sm-8 well well-sm white field-margin">
+            <label  for="startday" class="col-sm-2 control-label label-padding">Pocetak:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
                 {{client.policy.startdate | date }}
             </div>
         </div>
 
         <div *ngIf=client.policy.duration class="padding-left">
-            <label  for="duration" class="col-sm-3 control-label label-padding">Trajanje:</label>
-            <div class="col-sm-8 well well-sm white field-margin">
+            <label  for="duration" class="col-sm-2 control-label label-padding">Trajanje:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
                 {{client.policy.duration }}
             </div>
         </div>
 
         <div *ngIf=client.policy.warning class="padding-left"> 
-            <label  for="warning" class="col-sm-3 control-label label-padding">Upozorenje:</label>
-            <div class="col-sm-8 well well-sm white field-margin">
+            <label  for="warning" class="col-sm-2 control-label label-padding">Upozorenje:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
                 {{client.policy.warning}}
             </div>
         </div>

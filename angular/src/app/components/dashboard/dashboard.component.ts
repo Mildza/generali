@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
       describe: this.describe,
       idpolicy:this.idpolicy,
       value: this.value,
-      startdate: this.day+"/"+this.month+"/"+this.year,
+      startdate: this.month+"/"+this.day+"/"+this.year,
       duration:this.duration,
       warning: this.warning,
       recommendation: this.recommendation,

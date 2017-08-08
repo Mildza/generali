@@ -2,6 +2,14 @@
 h2 {
   cursor: pointer; 
   cursor: hand;
+  text-align: left;
+}
+
+h4 {
+  display: inline-block;
+  cursor: pointer;
+  margin-top:30px;
+  
 }
 
 .label-padding{
@@ -21,10 +29,14 @@ h2 {
     padding-left: 100px;
     padding-right: 10px; 
   }
+  .field-margin{
+    margin-left:8px;
+  }
+
 
 @media (max-width: 768px){
     .padding-left{
-    padding-left: 50px;
+    padding-left: 30px;
     padding-right: 2px; 
     }
     .label-padding {
@@ -33,7 +45,8 @@ h2 {
     }
 
   .field-margin{
-      margin-bottom:1px;    
+      margin-bottom:1px;
+      margin-left:0px;    
     }
     .btn-find {
     margin-top: 20px; 
