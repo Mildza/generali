@@ -85,7 +85,7 @@ router.post('/update/:id', (req, res, next) => {
     },
     policy: {
       describe: req.body.describe,
-      idpolicy: req.body.describe,
+      idpolicy: req.body.idpolicy,
       value: req.body.value,
       startdate: req.body.startdate,
       duration: req.body.duration,

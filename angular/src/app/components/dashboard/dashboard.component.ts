@@ -4,6 +4,8 @@ import {AuthService} from '../../services/auth.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {Router} from '@angular/router'
 import {StorageService} from '../../services/storage.service'
+import {PolicyService} from '../../services/policy.service'
+
 import * as moment from 'moment';
 
 @Component({
@@ -31,6 +33,10 @@ export class DashboardComponent implements OnInit {
   month: String
   year: String
 
+  public selectPolice: any
+  public selectOption: any
+   
+  
 
   constructor(
     private validateService: ValidateService, 
@@ -38,8 +44,11 @@ export class DashboardComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private router: Router,
     private storageService: StorageService,
+    private policyService: PolicyService
     
-  ) { }
+   
+    
+  ) {  }
 
   ngOnInit() {
 
@@ -50,7 +59,9 @@ export class DashboardComponent implements OnInit {
       this.month = res[0]
       this.day = res[1]
       this.year = res[2]
-    //Do something
+    
+      this.selectOption = this.policyService.selectOption
+      this.selectPolice=this.policyService.selectPolice
 
   }
   onAddSubmit(){
@@ -60,7 +71,7 @@ export class DashboardComponent implements OnInit {
       phone: this.phone,      
       street: this.street,
       city: this.city,
-      describe: this.describe,
+      describe: this.selectPolice.label,
       idpolicy:this.idpolicy,
       value: this.value,
       startdate: this.month+"/"+this.day+"/"+this.year,
@@ -71,7 +82,7 @@ export class DashboardComponent implements OnInit {
       owner: this.owner
       
     } 
-    console.log(client.city)
+    console.log(client.describe)
 
     this.authService.addClient(client).subscribe(data => {
       if(data.success){

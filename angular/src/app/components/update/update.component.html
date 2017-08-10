@@ -26,7 +26,10 @@
     <div class="form-group padding-left" formGroupName="policy">
       <label for="describe" class="col-sm-2 control-label ">Polisa</label>
       <div class="col-sm-8">
-        <input class="form-control" formControlName="describe">      
+         <select class="form-control" formControlName="selectPolicy" name="selectPolicy">
+          <option *ngFor="let item of selectOption" [value]="item.label"
+         [disabled]="item.value==0"  required>{{item.label}}</option>
+        </select>       
     </div>
     </div>
 

@@ -23,6 +23,7 @@ import {AuthService} from './services/auth.service'
 import {FlashMessagesModule} from 'angular2-flash-messages'
 import {AuthGuard} from './guards/auth.guard';
 import {StorageService} from './services/storage.service'
+import {PolicyService} from './services/policy.service'
 import {CapitalizePipe} from './pipes/capitalize.pipe'
 import {DatePipe} from './pipes/date.pipe'
 
@@ -70,7 +71,7 @@ const appRoutes: Routes = [
     
     
   ],
-  providers: [ValidateService, AuthService, AuthGuard, StorageService],
+  providers: [ValidateService, AuthService, AuthGuard, StorageService, PolicyService],
   bootstrap: [AppComponent],
 
 })

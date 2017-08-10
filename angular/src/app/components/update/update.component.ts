@@ -5,6 +5,8 @@ import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import { Http } from '@angular/http';
 import {StorageService} from '../../services/storage.service'
+import {PolicyService} from '../../services/policy.service'
+
 import * as moment from 'moment';
 
 declare var $:any;
@@ -72,6 +74,9 @@ export class UpdateComponent implements OnInit {
 
   id:{String}
 
+  selectPolicy: any
+  selectOption: any
+
   constructor(
     private authService:AuthService,
     private route: ActivatedRoute,
@@ -79,7 +84,8 @@ export class UpdateComponent implements OnInit {
     private fb: FormBuilder,
     private flashMessage: FlashMessagesService,
     private http: Http,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private policyService: PolicyService
     ) {
       
       this.createForm();
@@ -87,8 +93,9 @@ export class UpdateComponent implements OnInit {
 
     
     ngOnInit() {
-     
-      
+      this.selectOption = this.policyService.selectOption
+      this.selectPolicy=this.policyService.selectPolice
+         
    }
 
    splitdate(spliter){
@@ -109,7 +116,7 @@ export class UpdateComponent implements OnInit {
         city: ''
       }),
       policy: this.fb.group({
-        describe: '',
+        selectPolicy: '',
         idpolicy:'',
         values: '',
         startdate: '',
@@ -130,6 +137,8 @@ export class UpdateComponent implements OnInit {
         this.startdate=(moment(this.result[0].policy.startdate).format('L')),
         this.splitdate(this.startdate)
         
+        this.policyService.findPolicy(this.result[0].policy.describe)
+       
         this.updateForm.patchValue({
         firstname:this.result[0].firstname.toUpperCase(),
         lastname:this.result[0].lastname.toUpperCase(),
@@ -139,7 +148,7 @@ export class UpdateComponent implements OnInit {
           city:this.result[0].address.city
         },
         policy:{
-          describe:this.result[0].policy.describe,
+          selectPolicy:this.selectPolicy.label,
           idpolicy:this.result[0].policy.idpolicy,
           values:this.result[0].policy.value,
           
@@ -158,14 +167,15 @@ export class UpdateComponent implements OnInit {
  }
 
   onSubmit(){
+    
     const id = this.route.snapshot.params['id']
-
+    
     const firstname2 = this.updateForm.get('firstname')  
     const lastname2 = this.updateForm.get('lastname') 
     const phone2=  this.updateForm.get('phone')
     const street2= this.updateForm.get('address.street')     
     const city2= this.updateForm.get('address.city')
-    const describe2= this.updateForm.get('policy.describe')
+    const describe2= this.updateForm.get('policy.selectPolicy')
     const idpolicy2= this.updateForm.get('policy.idpolicy')
     const value2= this.updateForm.get('policy.values')
     const day2= this.updateForm.get('policy.day')
@@ -183,6 +193,7 @@ export class UpdateComponent implements OnInit {
     street: street2.value,      
     city: city2.value,
     describe: describe2.value,
+    idpolicy: idpolicy2.value,
     value: value2.value,
     startdate:month2.value+"/"+day2.value+"/"+year2.value,
     duration: duration2.value,
