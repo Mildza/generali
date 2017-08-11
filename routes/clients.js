@@ -24,7 +24,8 @@ router.post('/dashboard', (req, res, next) => {
       startdate: req.body.startdate,
       duration: req.body.duration,
       warning: req.body.warning
-    },       
+    },  
+    additional:req.body.additional,     
     recommendation: req.body.recommendation,
     note: req.body.note,
     owner: req.body.owner
@@ -39,35 +40,6 @@ router.post('/dashboard', (req, res, next) => {
   });
 });
 
-router.post('/rewrite', (req, res, next) => {
-  let newClient = new Client({
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,    
-    phone: req.body.phone,
-    address: {
-      street: req.body.street,
-      city: req.body.city
-    },
-   policy: {
-      describe: req.body.describe,
-      idpolicy: req.body.describe,
-      value: req.body.value,
-      startdate: req.body.startdate,
-      duration: req.body.duration,
-      warning: req.body.warning
-    },       
-    recommendation: req.body.recommendation,
-    note: req.body.note
-  });
-  console.log(newClient.firstname)
-  // Client.addClient(newClient, (err, user) => {
-  //   if(err){
-  //     res.json({success: false, msg:'Failed add Client'});
-  //   } else {
-  //     res.json({success: true, msg:'Client added'});
-  //   }
-  // });
-});
 
 router.post('/update/:id', (req, res, next) => {
 
@@ -90,7 +62,8 @@ router.post('/update/:id', (req, res, next) => {
       startdate: req.body.startdate,
       duration: req.body.duration,
       warning: req.body.warning
-    },       
+    },
+    additional:req.body.additional,       
     recommendation: req.body.recommendation,
     note: req.body.note,
     _id: client.id
@@ -184,7 +157,8 @@ router.post('/updated', function(req, res) {
       startdate: req.body.startdate,
       duration: req.body.duration,
       warning: req.body.warning
-    },       
+    }, 
+    addiotional:req.body.additional,      
     recommendation: req.body.recommendation,
     note: req.body.note,
     _id: client.id

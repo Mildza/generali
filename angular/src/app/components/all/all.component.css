@@ -1,4 +1,16 @@
 
+.borders {
+  border-bottom:1px solid #cccccc;
+  margin-bottom: 10px;
+}
+.border-left{
+  border-left: 1px solid #cccccc;
+}
+
+.padding-lefts {
+  padding: 0px;
+}
+
 h2 {
   cursor: pointer; 
   cursor: hand;
@@ -43,7 +55,10 @@ h4 {
       padding-left: 0px;
       padding-bottom: 0px;
     }
-
+    .margin-tops {
+      margin-top:5px;
+      padding-left: 3px;
+    }
   .field-margin{
       margin-bottom:1px;
       margin-left:0px;    
@@ -54,5 +69,9 @@ h4 {
   .col-sm-5 {
     margin-bottom: 10px;
   }
+
+  .border-left{
+  border-left: 0px;
+}
 }
 

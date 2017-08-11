@@ -74,6 +74,19 @@
                 {{client.policy.warning}}
             </div>
         </div>
+        <div *ngIf=client.additional>
+            <label  for="additional" class="col-sm-2 control-label label-padding">Dodatna:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.additional}}
+            </div>
+        </div>
+
+        <div *ngIf=client.note>
+            <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
+            <div class="col-sm-9 well well-sm white field-margin">
+                {{client.note}}
+            </div>
+        </div>
 
         <div *ngIf=client.recommendation>
             <label  for="recommendation" class="col-sm-2 control-label label-padding">Preporuka:</label>
@@ -81,6 +94,9 @@
                 {{client.recommendation}}
             </div>
         </div>
+
+     
+
         <div *ngIf=client.phone>
             <label  for="phone" class="col-sm-2 control-label label-padding">Telefon:</label>
             <div class="col-sm-9 well well-sm white field-margin">
@@ -102,12 +118,7 @@
             </div>
         </div>
 
-        <div *ngIf=client.note>
-            <label  for="note" class="col-sm-2 control-label label-padding">Zabeleska:</label>
-            <div class="col-sm-9 well well-sm white field-margin">
-                {{client.note}}
-            </div>
-        </div>
+        
     <div class="col-md-12 "> 
       <!-- <div class="col-md-2 well well-sm black field-margin">
         id:

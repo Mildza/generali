@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
   day: String
   month: String
   year: String
+  additional: String
 
   public selectPolice: any
   public selectOption: any
@@ -77,6 +78,7 @@ export class DashboardComponent implements OnInit {
       startdate: this.month+"/"+this.day+"/"+this.year,
       duration:this.duration,
       warning: this.warning,
+      additional: this.additional,
       recommendation: this.recommendation,
       note: this.note,
       owner: this.owner

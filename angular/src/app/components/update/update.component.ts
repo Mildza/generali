@@ -65,7 +65,8 @@ export class UpdateComponent implements OnInit {
       day:String
       year:String
       month: String
-    }   
+    }  
+    additional: String 
     recommendation: String  
     note:String
   } 
@@ -93,9 +94,9 @@ export class UpdateComponent implements OnInit {
 
     
     ngOnInit() {
+      //load policy array
       this.selectOption = this.policyService.selectOption
       this.selectPolicy=this.policyService.selectPolice
-         
    }
 
    splitdate(spliter){
@@ -126,6 +127,7 @@ export class UpdateComponent implements OnInit {
         month:"",
         year:""
       }),
+      additional:'',
       recommendation: '',
       note: '',
       id:''
@@ -158,6 +160,7 @@ export class UpdateComponent implements OnInit {
           duration:this.result[0].policy.duration,          
           warning:this.result[0].policy.warning 
         },
+        additional:this.result[0].additional, 
         recommendation:this.result[0].recommendation,
         note:this.result[0].note,
         id:id
@@ -166,8 +169,7 @@ export class UpdateComponent implements OnInit {
       ) 
  }
 
-  onSubmit(){
-    
+  onSubmit(){    
     const id = this.route.snapshot.params['id']
     
     const firstname2 = this.updateForm.get('firstname')  
@@ -182,6 +184,7 @@ export class UpdateComponent implements OnInit {
     const month2= this.updateForm.get('policy.month')
     const year2 = this.updateForm.get('policy.year')
     const duration2= this.updateForm.get('policy.duration')    
+    const additional2= this.updateForm.get('additional')
     const warning2= this.updateForm.get('policy.warning')
     const recommendation2= this.updateForm.get('recommendation')    
     const note2= this.updateForm.get('note') 
@@ -197,6 +200,7 @@ export class UpdateComponent implements OnInit {
     value: value2.value,
     startdate:month2.value+"/"+day2.value+"/"+year2.value,
     duration: duration2.value,
+    additional: additional2.value,
     warning: warning2.value,    
     recommendation: recommendation2.value,
     note: note2.value,
