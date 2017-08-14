@@ -1,25 +1,18 @@
 
-.borders {
+.border-bottom {
   border-bottom:1px solid #cccccc;
   margin-bottom: 10px;
 }
 .border-left{
   border-left: 1px solid #cccccc;
+
 }
 
-.padding-lefts {
-  padding: 0px;
-}
+.hand {cursor: pointer;}
 
-h2 {
-  cursor: pointer; 
-  cursor: hand;
-  text-align: left;
-}
 
 h4 {
-  display: inline-block;
-  cursor: pointer;
+  
   margin-top:30px;
   
 }
@@ -46,7 +39,7 @@ h4 {
   }
 
 
-@media (max-width: 768px){
+@media (max-width: 767px){
     .padding-left{
     padding-left: 30px;
     padding-right: 2px; 

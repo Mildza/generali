@@ -1,16 +1,13 @@
 <div *ngIf="result" class="col-lg-7 col-md-offset-2">
     
   <div *ngFor="let client of result, let i = index" >
-    
-    <!-- <h2 class="page-header col-sm-12 header-margin" (click)="clicked(clint,i)">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}
-        <span><h4> {{client.policy.describe}} </h4></span></h2>
-     -->
-    <div class= "col-lg-12 borders row padding-lefts" (click)="clicked(clint,i)">
+
+    <div class= "col-lg-12 border-bottom row hand" (click)="clicked(clint,i)">
         <div class= "col-sm-6" >
-            <h2>{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
+            <h2 class="text-left">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
         </div>
         <div class= "col-sm-6 border-left">
-           <h4 class= "margin-tops "> {{client.policy.describe}}</h4>
+           <h4 class= "margin-tops"> {{client.policy.describe}}</h4>
         </div>
     </div>
 
