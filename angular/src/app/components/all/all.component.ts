@@ -35,6 +35,8 @@ import {DatePipe} from '../../pipes/date.pipe'
 ]
 })
 
+
+
 export class AllComponent implements OnInit {
 
   owner: String
@@ -42,11 +44,14 @@ export class AllComponent implements OnInit {
   message: any;
   
   public client = {
-     state:"hide"
+     state:"hide",
+     show: true
   }
   
   result: {}
-      
+  
+  policystate: boolean = true
+
   constructor(
     private authService:AuthService,
     private router:Router,
@@ -60,15 +65,17 @@ export class AllComponent implements OnInit {
     this.owner = this.storageService.getStorage() 
     this.authService.getAll(this.owner)
     .subscribe(result => this.result = result) 
+    this.client.show=true
   }  
-
+    
   upp(string){
     return string.toUpperCase()
   }
     
     clicked(client, index) {        
       this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
-                      
+      this.result[index].show = (this.result[index].show === true ? false : true);
+                    
     }     
   
 }
