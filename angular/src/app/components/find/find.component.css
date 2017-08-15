@@ -29,15 +29,19 @@
     padding-right: 10px; 
   }
 
+  
+
 @media (max-width: 768px){
     .padding-left{
-    padding-left: 50px;
+    padding-left: 30px;
     padding-right: 2px; 
     }
     .label-padding {
       padding-left: 0px;
       padding-bottom: 0px;
     }
+
+    
 
   .field-margin{
       margin-bottom:1px;    
@@ -47,5 +51,11 @@
     }
   .col-sm-5 {
     margin-bottom: 10px;
+    
   }
+  h2 {
+        padding: 0;
+        margin: 0;
+      }
 }
+

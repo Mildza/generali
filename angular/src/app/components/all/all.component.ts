@@ -48,6 +48,8 @@ export class AllComponent implements OnInit {
      show: true
   }
   
+  show: boolean = true
+
   result: {}
   
   policystate: boolean = true
@@ -65,7 +67,7 @@ export class AllComponent implements OnInit {
     this.owner = this.storageService.getStorage() 
     this.authService.getAll(this.owner)
     .subscribe(result => this.result = result) 
-    this.client.show=true
+    
   }  
     
   upp(string){

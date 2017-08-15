@@ -8,7 +8,7 @@
           <div class= "col-sm-6" >
               <h2 class="text-left">{{ client.firstname | capitalize }} {{client.lastname | capitalize}}</h2>
           </div>
-          <div class= "col-sm-4 border-left" *ngIf=client.show>
+          <div class= "col-sm-4 border-left" *ngIf=!client.show>
             <h4 class= "margin-tops"> {{client.policy.describe}}</h4>
           </div>
       </div>

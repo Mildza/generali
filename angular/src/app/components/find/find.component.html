@@ -28,10 +28,10 @@
   
 </form>
 </div>
-<div *ngIf="result" class="col-md-7 col-md-offset-3">
+<div *ngIf="result" class="col-md-7 col-md-offset-3 padding-frame">
   
 <div *ngFor="let client of result" [@itemAnim]> 
-   <h2 class="page-header col-md-8 col-md-offset-3" >{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
+   <h2 class="text-left">{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
     
     <div class="row">
         <div *ngIf=client.policy.describe>

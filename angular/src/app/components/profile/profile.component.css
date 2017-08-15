@@ -1,0 +1,27 @@
+label {
+  text-align: right;
+  padding-top: 11px;
+}
+
+.padding {
+    padding-bottom: 30px;
+}
+
+.form-control[disabled] {
+  background-color: white;
+  cursor:text;
+}
+
+@media (max-width: 767px){
+    label{
+        padding-left: 0px;
+        
+    }
+      h2 {
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+    .padding {
+        padding-bottom: 10px;
+    }
+}
