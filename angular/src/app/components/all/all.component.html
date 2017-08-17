@@ -61,6 +61,15 @@
       </div>
 
       <div class="row">
+        <div *ngIf=client.policy.duration class="padding-left">
+            <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Proteklo:</label>
+            <div class="col-sm-8 well well-sm white field-margin">
+                {{ellapsedTime(client.policy.startdate) }}
+            </div>
+        </div>
+      </div>
+
+      <div class="row">
         <div *ngIf=client.policy.warning class="padding-left"> 
             <label  for="warning" class="col-sm-2 col-sm-offset-1 control-label label-padding">Upozorenje:</label>
             <div class="col-sm-8 well well-sm white field-margin">

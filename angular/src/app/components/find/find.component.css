@@ -29,11 +29,15 @@
     padding-right: 10px; 
   }
 
-  
+  .clear{
+    margin-left: 0;
+    padding-left: 0;
+
+  }
 
 @media (max-width: 768px){
     .padding-left{
-    padding-left: 30px;
+    padding-left: 20px;
     padding-right: 2px; 
     }
     .label-padding {

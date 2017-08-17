@@ -1,4 +1,4 @@
-<div class="container-fluid">
+
 <div class="col-md-8 col-md-offset-2"> 
 <form class="form-horizontal" (submit)="onFindSubmit()">
   
@@ -30,9 +30,10 @@
 </div>
 <div *ngIf="result" class="col-md-7 col-md-offset-3 padding-frame">
   
-<div *ngFor="let client of result" [@itemAnim]> 
-   <h2 class="text-left">{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
-    
+<div *ngFor="let client of result" [@itemAnim] > 
+   <div class="row"> 
+  <h2 >{{client.firstname | capitalize}} {{client.lastname | capitalize}}</h2>
+   </div>
     <div class="row">
         <div *ngIf=client.policy.describe>
             <label  for="policy" class="col-sm-2 control-label label-padding">Polisa:</label>
@@ -156,7 +157,7 @@
   
 </div>
 </div>
-</div>
+
 <script>
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip() 

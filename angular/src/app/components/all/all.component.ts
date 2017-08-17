@@ -10,7 +10,7 @@ import { trigger,
 import {StorageService} from '../../services/storage.service'
 import {CapitalizePipe} from '../../pipes/capitalize.pipe'
 import {DatePipe} from '../../pipes/date.pipe'
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-all',
@@ -78,6 +78,27 @@ export class AllComponent implements OnInit {
       this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
       this.result[index].show = (this.result[index].show === true ? false : true);
                     
-    }     
+    }
+  ellapsedTime(time){
+    // var a = moment(time);
+    // var now = moment();
+    // now.from(a) // "a day ago"
+    var startday = (moment(time).format('L'))
+     var res = startday.split("/");
+     
+      var month = res[0]
+      var months = Number(month)-1
+      var day = res[1]
+      var year = res[2]
+      console.log(month, day, year)
+
+   var rest= moment([year, months, day]).toNow(true); 
+  //  var rest= moment([2017, 0, 16]).toNow(true); 
+    rest = rest.replace("months", "meseci");
+    rest = rest.replace("days", "dana");
+    rest = rest.replace("years", "godina");
+    return rest
+  }  
+    
   
 }

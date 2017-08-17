@@ -28,3 +28,23 @@
     margin-bottom: 10px;
 }
 
+@media (max-width: 768px){
+    .padding-left{
+    padding-left: 20px;
+    padding-right: 2px;     
+    
+}
+.btn {
+    margin-bottom: 10px;
+}
+
+.control-label {
+    padding-bottom: 0px;
+    margin-bottom: 0;
+}
+
+.form-control{
+    padding-bottom: 0;
+    padding-top: 0;
+}
+}

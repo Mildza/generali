@@ -225,7 +225,7 @@ export class UpdateComponent implements OnInit {
         const success= Boolean
         this.http.delete('http://localhost:3000/clients/update/'+id).subscribe(res => {
             if(res.status){
-        this.flashMessage.show('Obrisan Korisnik', {cssClass: 'alert-success', timeout: 3000})
+        this.flashMessage.show('Obrisan Klijent', {cssClass: 'alert-success', timeout: 3000})
         this.router.navigate(['/all/'])  
       } else {
         this.flashMessage.show('Brisanje nije uspelo', {cssClass: 'alert-danger', timeout: 3000})
