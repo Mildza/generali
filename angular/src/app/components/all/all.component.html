@@ -17,7 +17,7 @@
     <div  [@clientState]="client.state || 'hide'">
         <div class="row">
         <div *ngIf=client.policy.describe>
-            <label  for="policy" class="col-sm-2 col-sm-offset-1 col-sm-offset-1 control-label label-padding">Polisa:</label>
+            <label  for="policy" class="col-sm-2 col-sm-offset-1 col-sm-offset-1 control-label label-padding">Polisa</label>
             <div class="col-sm-8 well well-sm white field-margin" name="policy">
                 {{client.policy.describe}}
             </div>
@@ -26,7 +26,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.value class="padding-left">
-            <label  for="value" class="col-sm-2 col-sm-offset-1 control-label label-padding">Vrednost:</label>
+            <label  for="value" class="col-sm-2 col-sm-offset-1 control-label label-padding">Vrednost</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.value}}
             </div>
@@ -35,7 +35,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.idpolicy class="padding-left">
-            <label  for="idpolicy" class="col-sm-2 col-sm-offset-1 control-label label-padding">Broj:</label>
+            <label  for="idpolicy" class="col-sm-2 col-sm-offset-1 control-label label-padding">Broj</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.idpolicy }}
             </div> 
@@ -44,7 +44,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.startdate class="padding-left">
-            <label  for="startday" class="col-sm-2 col-sm-offset-1 control-label label-padding">Pocetak:</label>
+            <label  for="startday" class="col-sm-2 col-sm-offset-1 control-label label-padding">Pocetak</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.startdate | date }}
             </div>
@@ -53,7 +53,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.duration class="padding-left">
-            <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Trajanje:</label>
+            <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Trajanje</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.duration }}
             </div>
@@ -62,7 +62,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.duration class="padding-left">
-            <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Proteklo:</label>
+            <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Proteklo</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{ellapsedTime(client.policy.startdate) }}
             </div>
@@ -71,7 +71,7 @@
 
       <div class="row">
         <div *ngIf=client.policy.warning class="padding-left"> 
-            <label  for="warning" class="col-sm-2 col-sm-offset-1 control-label label-padding">Upozorenje:</label>
+            <label  for="warning" class="col-sm-2 col-sm-offset-1 control-label label-padding">Upozorenje</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.policy.warning}}
             </div>
@@ -89,7 +89,7 @@
       
       <div class="row">          
          <div *ngIf=client.note>
-            <label  for="note" class="col-sm-2 col-sm-offset-1 control-label label-padding">Zabeleska:</label>
+            <label  for="note" class="col-sm-2 col-sm-offset-1 control-label label-padding">Zabeleska</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.note}}
             </div>
@@ -98,7 +98,7 @@
       
       <div class="row">
         <div *ngIf=client.recommendation>
-            <label  for="recommendation" class="col-sm-2 col-sm-offset-1 control-label label-padding">Preporuka:</label>
+            <label  for="recommendation" class="col-sm-2 col-sm-offset-1 control-label label-padding">Preporuka</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.recommendation}}
             </div>
@@ -107,7 +107,7 @@
 
       <div class="row">          
         <div *ngIf=client.phone>
-            <label  for="phone" class="col-sm-2 col-sm-offset-1 control-label label-padding">Telefon:</label>
+            <label  for="phone" class="col-sm-2 col-sm-offset-1 control-label label-padding">Telefon</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.phone}}
             </div>
@@ -115,8 +115,8 @@
       </div>
       
       <div class="row">          
-        <div *ngIf=client.address.city>
-            <label  for="city" class="col-sm-2 col-sm-offset-1 control-label label-padding">Grad:</label>
+        <div *ngIf=client.address>
+            <label  for="city" class="col-sm-2 col-sm-offset-1 control-label label-padding">Grad</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.address.city}}
             </div>
@@ -124,8 +124,8 @@
       </div>
 
       <div class="row">                    
-        <div *ngIf=client.address.street>
-            <label  class="col-sm-2 col-sm-offset-1 control-label label-padding">Ulica:</label>
+        <div *ngIf=client.address>
+            <label  class="col-sm-2 col-sm-offset-1 control-label label-padding">Ulica</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.address.street}}
             </div>

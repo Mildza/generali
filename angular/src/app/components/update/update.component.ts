@@ -23,7 +23,7 @@ export class UpdateComponent implements OnInit {
 
   firstname: String 
   lastname: String
-  phone: Array<number>  
+  phone: String  
   address:{
     street: String
     city: String}
@@ -146,8 +146,8 @@ export class UpdateComponent implements OnInit {
         lastname:this.result[0].lastname.toUpperCase(),
         phone:this.result[0].phone,
         address:{
-          street:this.result[0].address.street,
-          city:this.result[0].address.city
+          street:this.result[0].address ? this.result[0].address.street:"",
+          city:this.result[0].address ? this.result[0].address.city:"",
         },
         policy:{
           selectPolicy:this.selectPolicy.label,

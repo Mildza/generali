@@ -90,7 +90,7 @@ export class AllComponent implements OnInit {
       var months = Number(month)-1
       var day = res[1]
       var year = res[2]
-      console.log(month, day, year)
+      
 
    var rest= moment([year, months, day]).toNow(true); 
   //  var rest= moment([2017, 0, 16]).toNow(true); 

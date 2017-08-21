@@ -11,7 +11,7 @@ const Schema = mongoose.Schema({
   lastname: {
     type: String
   },
-  phone: [],
+  phone: String,
   address : {
     street: String,
     city: String

@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   
   firstname: String  
   lastname: String 
-  phone: Array<number>  
+  phone: String  
   street: String
   city: String
   describe: String
