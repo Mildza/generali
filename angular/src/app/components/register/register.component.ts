@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
+
   onRegisterSubmit(){
     const user = {
       name: this.name,
@@ -41,8 +42,7 @@ export class RegisterComponent implements OnInit {
     this.flashMessage.show('Please use a valid email address', {cssClass: 'alert-danger', timeout: 3000})
       return false
     }
-    // register User //
-    
+    // register User //    
     this.authService.checkUser(this.username).subscribe(data =>{
       if(data.success){
         this.flashMessage.show('username is taken, choose another one', {cssClass: 'alert-danger', timeout: 3000})

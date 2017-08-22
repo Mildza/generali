@@ -132,6 +132,11 @@ export class UpdateComponent implements OnInit {
       note: '',
       id:''
     });
+      function capitalizeFirstLetters(str){
+      return str.toLowerCase().replace(/^\w|\s\w/g, function (letter) {
+          return letter.toUpperCase();
+      })
+    }
        const id = this.route.snapshot.params['id']       
        this.authService.getUpdate(id)
       .subscribe(res => {
@@ -142,8 +147,8 @@ export class UpdateComponent implements OnInit {
         this.policyService.findPolicy(this.result[0].policy.describe)
        
         this.updateForm.patchValue({
-        firstname:this.result[0].firstname.toUpperCase(),
-        lastname:this.result[0].lastname.toUpperCase(),
+        firstname:capitalizeFirstLetters(this.result[0].firstname),
+        lastname:capitalizeFirstLetters(this.result[0].lastname),
         phone:this.result[0].phone,
         address:{
           street:this.result[0].address ? this.result[0].address.street:"",

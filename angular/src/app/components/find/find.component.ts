@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
-import { trigger, state, style,animate, transition, group} from '@angular/animations'
-import {  Validators } from '@angular/forms'
+import {trigger, state, style,animate, transition, group} from '@angular/animations'
+import {Validators } from '@angular/forms'
 import {StorageService} from '../../services/storage.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {ValidateService} from '../../services/validate.service'
@@ -32,6 +32,7 @@ declare var $:any;
   ])
 ]
 })
+
 export class FindComponent implements OnInit {
 
   firstname: String
@@ -43,51 +44,38 @@ export class FindComponent implements OnInit {
   user: String
   count:number
 
-    constructor(
-      private authService:AuthService,
-      private router:Router,
-      private flashMessage: FlashMessagesService ,
-      private storageService: StorageService,
-      private validateService: ValidateService
-) { }
+  constructor(
+    private authService:AuthService,
+    private router:Router,
+    private flashMessage: FlashMessagesService ,
+    private storageService: StorageService,
+    private validateService: ValidateService
+  ) { }
 
-    ngOnInit() { 
-      this.owner = this.storageService.getStorage()
-      this.count = 0      
+  ngOnInit() { 
+    this.owner = this.storageService.getStorage()
+    this.count = 0      
+  }
+
+  onFindSubmit(){
+      const search = {
+      firstname: this.validateService.toLowerCase(this.firstname),
+      user: this.owner    
     }
-
-    onFindSubmit(){
-
-       const search = {
-       firstname: this.validateService.toLowerCase(this.firstname),
-       user: this.owner    
-      }
-      
-       this.authService.postFind(search)
-      .subscribe(result => {
+    
+    this.authService.postFind(search)
+    .subscribe(result => {
       if(result.success){
         this.flashMessage.show('Nema takvog klijenta', {cssClass: 'alert-danger', timeout: 3000})
         this.result = 0
-        this.count = 0
-        
+        this.count = 0        
       } else {
         this.result = result
-        this.count = Object.keys(this.result).length;
-        console.log(this.count)
-        
-      }
-      })
+        this.count = Object.keys(this.result).length       
+        }
+    })
   }
-
-   onSelect(client) {     
-    //  console.log(client._id)
+    onSelect(client) {     
     this.router.navigate(['/update', client._id]);
-  }
-
-    ngAfterViewInit(){
-      
-
     }
-  
-
 }

@@ -3,9 +3,7 @@ label {
   padding-top: 11px;
 }
 
-.padding {
-    padding-bottom: 30px;
-}
+.padding {padding-bottom: 30px;}
 
 .form-control[disabled] {
   background-color: white;
@@ -13,15 +11,12 @@ label {
 }
 
 @media (max-width: 767px){
-    label{
-        padding-left: 0px;
-        
+
+    label {padding-left: 0px;}
+
+    h2 {
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
-      h2 {
-        padding-bottom: 0;
-        margin-bottom: 0;
-      }
-    .padding {
-        padding-bottom: 10px;
-    }
+    .padding {padding-bottom: 10px;}
 }

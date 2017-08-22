@@ -18,14 +18,14 @@ import { FindComponent } from './components/find/find.component';
 import { UpdateComponent } from './components/update/update.component';
 
 
-import {ValidateService} from './services/validate.service'
-import {AuthService} from './services/auth.service'
-import {FlashMessagesModule} from 'angular2-flash-messages'
-import {AuthGuard} from './guards/auth.guard';
-import {StorageService} from './services/storage.service'
-import {PolicyService} from './services/policy.service'
-import {CapitalizePipe} from './pipes/capitalize.pipe'
-import {DatePipe} from './pipes/date.pipe'
+import { ValidateService } from './services/validate.service'
+import { AuthService } from './services/auth.service'
+import { FlashMessagesModule } from 'angular2-flash-messages'
+import { AuthGuard } from './guards/auth.guard';
+import { StorageService } from './services/storage.service'
+import { PolicyService } from './services/policy.service'
+import { CapitalizePipe } from './pipes/capitalize.pipe'
+import { DatePipe } from './pipes/date.pipe'
 
 
 const appRoutes: Routes = [
@@ -40,9 +40,7 @@ const appRoutes: Routes = [
   {path:'update', component: UpdateComponent, canActivate:[AuthGuard]},
   {path: 'update/:id', component: UpdateComponent, canActivate:[AuthGuard]},
   {path: '404', component: HomeComponent},
-  {path: '**',redirectTo: '/404'},
-  
-   
+  {path: '**',redirectTo: '/404'}   
 ]
 
 @NgModule({
@@ -60,6 +58,7 @@ const appRoutes: Routes = [
     CapitalizePipe,
     DatePipe 
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -67,12 +66,18 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule,
-    
-    
+    FlashMessagesModule 
   ],
-  providers: [ValidateService, AuthService, AuthGuard, StorageService, PolicyService],
-  bootstrap: [AppComponent],
+
+  providers: [
+    ValidateService,
+    AuthService,
+    AuthGuard,
+    StorageService,
+    PolicyService
+  ],
+
+  bootstrap: [ AppComponent ],
 
 })
 export class AppModule { }

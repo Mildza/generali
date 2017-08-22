@@ -1,8 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import {AuthService} from '../../services/auth.service'
 import {Router, ActivatedRoute, Params} from '@angular/router'
-import { trigger,
-        state,
+import { trigger,        state,
         style,
         animate,
         transition
@@ -35,23 +34,18 @@ import * as moment from 'moment';
 ]
 })
 
-
-
 export class AllComponent implements OnInit {
 
-  owner: String
-  
-  message: any;
-  
+  owner: String  
+  message: any
+
   public client = {
      state:"hide",
      show: true
   }
   
   show: boolean = true
-
-  result: {}
-  
+  result: {}  
   policystate: boolean = true
 
   constructor(
@@ -61,44 +55,33 @@ export class AllComponent implements OnInit {
     private storageService: StorageService
    ){ }
 
-//  const id = this.route.snapshot.params['id']
-
   ngOnInit() {
     this.owner = this.storageService.getStorage() 
     this.authService.getAll(this.owner)
-    .subscribe(result => this.result = result) 
-    
+    .subscribe(result => this.result = result)    
   }  
     
   upp(string){
     return string.toUpperCase()
   }
     
-    clicked(client, index) {        
-      this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
-      this.result[index].show = (this.result[index].show === true ? false : true);
-                    
-    }
-  ellapsedTime(time){
-    // var a = moment(time);
-    // var now = moment();
-    // now.from(a) // "a day ago"
-    var startday = (moment(time).format('L'))
-     var res = startday.split("/");
-     
-      var month = res[0]
-      var months = Number(month)-1
-      var day = res[1]
-      var year = res[2]
-      
+  clicked(client, index) {        
+    this.result[index].state = (this.result[index].state === 'show' ? 'hide' : 'show');
+    this.result[index].show = (this.result[index].show === true ? false : true)                  
+  }
 
-   var rest= moment([year, months, day]).toNow(true); 
-  //  var rest= moment([2017, 0, 16]).toNow(true); 
-    rest = rest.replace("months", "meseci");
-    rest = rest.replace("days", "dana");
-    rest = rest.replace("years", "godina");
+  ellapsedTime(time){
+    var startday = (moment(time).format('L'))
+    var res = startday.split("/")     
+    var month = res[0]
+    var months = Number(month)-1
+    var day = res[1]
+    var year = res[2]
+    var rest= moment([year, months, day]).toNow(true)
+    rest = rest.replace("months", "meseci")
+    rest = rest.replace("days", "dana")
+    rest = rest.replace("years", "godina")
     return rest
-  }  
-    
+  } 
   
 }

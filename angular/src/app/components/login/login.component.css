@@ -1,12 +1,8 @@
-.padding {
-    padding-bottom: 30px;
-}
+.padding {padding-bottom: 30px;}
 
 @media (max-width: 767px){
-    label{
-        padding-left: 0px;
-    }
-    .padding {
-        padding-bottom: 10px;
-    }
+
+  label{padding-left: 0px;}
+  
+  .padding {padding-bottom: 10px;}
 }
