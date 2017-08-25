@@ -20,7 +20,7 @@ const Schema = mongoose.Schema({
       describe: String,
       idpolicy: String,
       value: String,
-      startdate: Date, //payday
+      startdate: Date,
       duration: String,
       warning: String  
   },

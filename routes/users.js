@@ -3,11 +3,8 @@ const router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose');
-
 const config = require('../config/database')
 const User = require('../models/user')
-// var login2 = require('../routes/datausers.js')
-// console.log(login2.datauser)
 global.password = undefined
 
 // Register //
@@ -18,7 +15,6 @@ router.post('/register', (req, res, next) => {
         username: req.body.username,
         password: req.body.password
     })
-
     User.addUser(newUser, (err, user) => {
         if(err){
             res.json({success:false, msg:'Failed to register user'})
@@ -32,8 +28,7 @@ router.post('/register', (req, res, next) => {
 // Authenticate //
 router.post('/authenticate', (req, res, next) => {
     const username = req.body.username
-    const password = req.body.password
-    
+    const password = req.body.password    
 
     User.getUserByUsername(username, (err, user) => {
         if(err) throw err
@@ -46,8 +41,7 @@ router.post('/authenticate', (req, res, next) => {
         if(isMatch){
             const token = jwt.sign(user, config.secret, {                   
                 expiresIn : 604800
-            })
-            
+            })            
             res.json({
                 success: true,
                 token: 'JWT ' + token,
@@ -65,18 +59,15 @@ router.post('/authenticate', (req, res, next) => {
     
 })
 })
-
 // Chechk User //
 router.post('/checkuser/:username', (req, res, next) => {
     const username = req.params.username 
     User.getUserByUsername(username, (err, user) => {
-        if(err) throw err
-            
+        if(err) throw err            
         if(user) {
             return res.json({success: true, msg:'Username is taken'})
         } else {
-            return res.json({success: false, msg:'Username is taken'})
-            
+            return res.json({success: false, msg:'Username is taken'})   
         }
         
 })
