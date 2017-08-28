@@ -14,9 +14,7 @@ export class AuthService {
    }
 
   registerUser(user) {
-    let headers = new Headers()
-    this.loadToken()
-    headers.append('Authorization', this.authToken)
+    let headers = new Headers()    
     headers.append('Content-Type', 'application/json')
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
       .map(res => res.json())
@@ -78,8 +76,6 @@ export class AuthService {
 
   checkUser(username){
     let headers = new Headers()
-    this.loadToken()
-    headers.append('Authorization', this.authToken)
     headers.append('Content-Type', 'application/json')
     return this.http.post('http://localhost:3000/users/checkuser/' + username, {headers: headers})
       .map(res => res.json())

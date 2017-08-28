@@ -7,6 +7,7 @@ import { trigger,        state,
         transition
       } from '@angular/animations';
 import {StorageService} from '../../services/storage.service'
+import {UserService} from '../../services/user.service'
 import {CapitalizePipe} from '../../pipes/capitalize.pipe'
 import {DatePipe} from '../../pipes/date.pipe'
 import * as moment from 'moment';
@@ -52,13 +53,21 @@ export class AllComponent implements OnInit {
     private authService:AuthService,
     private router:Router,
     private route: ActivatedRoute,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
    ){ }
 
   ngOnInit() {
-    this.owner = this.storageService.getStorage() 
+    this.userService.getUserOwner()
+    .subscribe(name => {
+      this.owner = name;
+      console.log(name)
+    })    
+   
+    
     this.authService.getAll(this.owner)
-    .subscribe(result => this.result = result)    
+    .subscribe(result => this.result = result)
+       
   }  
     
   upp(string){

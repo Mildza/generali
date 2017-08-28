@@ -3,6 +3,9 @@ import {AuthService} from '../../services/auth.service'
 import {Router} from '@angular/router'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {StorageService} from '../../services/storage.service'
+import {UserService} from '../../services/user.service'
+
+
 
 @Component({
   selector: 'app-login',
@@ -12,15 +15,22 @@ import {StorageService} from '../../services/storage.service'
 export class LoginComponent implements OnInit {
   username: String
   password: String
+  user: String
+  owner: String
 
   constructor(
     private authService:AuthService,
     private flashMessage: FlashMessagesService ,
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.userService.getUserOwner()
+    .subscribe(name => {
+      this.owner = name;
+    })
   }
 
   onLoginSubmit(){
@@ -36,7 +46,10 @@ export class LoginComponent implements OnInit {
         'You are loged in', {
         cssClass: 'alert-success', 
         timeout: 3000})
-        this.storageService.getStorage() 
+        
+        this.userService.changeUser(this.username)
+        
+        
       this.router.navigate(['/profile'])
 
     } else {
