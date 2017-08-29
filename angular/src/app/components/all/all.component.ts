@@ -60,11 +60,10 @@ export class AllComponent implements OnInit {
   ngOnInit() {
     this.userService.getUserOwner()
     .subscribe(name => {
-      this.owner = name;
-      console.log(name)
+      this.owner = name      
     })    
    
-    
+    this.userService.changeUser(this.storageService.getStorage())
     this.authService.getAll(this.owner)
     .subscribe(result => this.result = result)
        
