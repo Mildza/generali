@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service'
-import {Router} from '@angular/router'
-import {FlashMessagesService} from 'angular2-flash-messages'
-import {StorageService} from '../../services/storage.service'
-import {UserService} from '../../services/user.service'
+import { AuthService } from '../../services/auth.service'
+import { Router } from '@angular/router'
+import { FlashMessagesService } from 'angular2-flash-messages'
+import { StorageService } from '../../services/storage.service'
+import { UserService } from '../../services/user.service'
 
 @Component({
   selector: 'app-navbar',
@@ -24,11 +24,12 @@ export class NavbarComponent implements OnInit {
    
   ngOnInit() {
     this.userService.getUserOwner()
-    .subscribe(name => {
-      this.owner = name;
-     
-    })   
-    
+    .subscribe(name =>this.owner = name)
+    console.log(this.owner)   
+  }
+
+  changeUser(){
+    this.owner = this.storageService.getStorage()
   }
 
   onLogoutClick(){

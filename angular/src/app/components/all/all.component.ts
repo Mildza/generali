@@ -1,15 +1,11 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
-import {AuthService} from '../../services/auth.service'
-import {Router, ActivatedRoute, Params} from '@angular/router'
-import { trigger,        state,
-        style,
-        animate,
-        transition
-      } from '@angular/animations';
-import {StorageService} from '../../services/storage.service'
-import {UserService} from '../../services/user.service'
-import {CapitalizePipe} from '../../pipes/capitalize.pipe'
-import {DatePipe} from '../../pipes/date.pipe'
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service'
+import { Router, ActivatedRoute, Params } from '@angular/router'
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { StorageService } from '../../services/storage.service'
+import { UserService } from '../../services/user.service'
+import { CapitalizePipe } from '../../pipes/capitalize.pipe'
+import { DatePipe } from '../../pipes/date.pipe'
 import * as moment from 'moment';
 
 @Component({
@@ -58,12 +54,11 @@ export class AllComponent implements OnInit {
    ){ }
 
   ngOnInit() {
-    this.userService.getUserOwner()
-    .subscribe(name => {
-      this.owner = name      
-    })    
-   
-    this.userService.changeUser(this.storageService.getStorage())
+    // this.userService.getUserOwner()
+    // .subscribe(name =>this.owner = name)    
+  
+    // this.userService.changeUser(this.storageService.getStorage())
+    this.owner = this.storageService.getStorage()
     this.authService.getAll(this.owner)
     .subscribe(result => this.result = result)
        

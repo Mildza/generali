@@ -19,7 +19,9 @@ public user: String
         } else {
           this.user = this.userJson.username
         }
-        return this.user        
+        // console.log(this.user)   
+        return this.user
+             
    }    
 
 }

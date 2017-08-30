@@ -51,9 +51,7 @@ export class DashboardComponent implements OnInit {
     
   ) {  }
 
-  ngOnInit() {
-
-   this.owner = this.storageService.getStorage()
+  ngOnInit() {   
     var today = (moment().format('L'))
      var res = today.split("/");
      
@@ -66,6 +64,7 @@ export class DashboardComponent implements OnInit {
 
   }
   onAddSubmit(){
+    this.owner = this.storageService.getStorage()
     const client = {
       firstname:  this.validateService.toLowerCase(this.firstname),
       lastname: this.validateService.toLowerCase(this.lastname),
@@ -83,8 +82,7 @@ export class DashboardComponent implements OnInit {
       note: this.note,
       owner: this.owner
       
-    } 
-    console.log(client.describe)
+    }     
 
     this.authService.addClient(client).subscribe(data => {
       if(data.success){
