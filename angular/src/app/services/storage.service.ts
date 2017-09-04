@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class StorageService {
@@ -6,7 +8,7 @@ export class StorageService {
 public userData:any
 public userJson:any;
 public user: String 
-
+obs = new BehaviorSubject([]);
 
   constructor() {
     this.userData = localStorage.getItem("user");
@@ -18,10 +20,15 @@ public user: String
              this.user = "ja" 
         } else {
           this.user = this.userJson.username
+        
         }
         // console.log(this.user)   
         return this.user
              
-   }    
+   }  
+   
+   addObs(obs) {
+    this.obs.next(obs);
+  }
 
 }

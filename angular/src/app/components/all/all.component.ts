@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy,
+  ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 import { Router, ActivatedRoute, Params } from '@angular/router'
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition } 
+from '@angular/animations';
+import { Observable } from 'rxjs/Observable';
 import { StorageService } from '../../services/storage.service'
 import { UserService } from '../../services/user.service'
 import { CapitalizePipe } from '../../pipes/capitalize.pipe'
@@ -44,18 +47,29 @@ export class AllComponent implements OnInit {
   show: boolean = true
   result: {}  
   policystate: boolean = true
+  @Input() data: Observable<any>;
+  obs: string;
 
   constructor(
     private authService:AuthService,
     private router:Router,
     private route: ActivatedRoute,
     private storageService: StorageService,
-    private userService: UserService
+    private userService: UserService,
+    private cd: ChangeDetectorRef
    ){ }
 
   ngOnInit() {
-    // this.userService.getUserOwner()
-    // .subscribe(name =>this.owner = name)    
+    // this.data.subscribe(obs => {
+    //   this.obs = obs;
+    //   this.cd.markForCheck();
+    // });
+    this.userService.getUserOwner()
+    .subscribe(name =>{
+      this.owner = name;
+      this.cd.markForCheck();
+    })
+        
   
     // this.userService.changeUser(this.storageService.getStorage())
     this.owner = this.storageService.getStorage()

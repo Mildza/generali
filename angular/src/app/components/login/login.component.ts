@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         cssClass: 'alert-success', 
         timeout: 3000})
         
-        // this.storageService.getStorage()
+        this.storageService.getStorage()
         this.userService.changeUser(this.username)
         
         
