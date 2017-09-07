@@ -24,13 +24,13 @@ export class NavbarComponent implements OnInit {
    
   ngOnInit() {
     this.userService.getUserOwner()
-    .subscribe(name =>this.owner = name)
-    console.log(this.owner)   
+    .subscribe(name =>this.owner = name) 
+    console.log(this.owner) 
   }
-
-  changeUser(){
-    this.owner = this.storageService.getStorage()
-  }
+  
+  // changeUser(){
+  //   this.owner = this.storageService.getStorage()
+  // }
 
   onLogoutClick(){
     this.authService.logout()

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy,
-  ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../services/auth.service'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 import { trigger, state, style, animate, transition } 
@@ -36,7 +35,8 @@ import * as moment from 'moment';
 
 export class AllComponent implements OnInit {
 
-  owner: String  
+  owner: String
+  newOwner: String  
   message: any
 
   public client = {
@@ -56,27 +56,29 @@ export class AllComponent implements OnInit {
     private route: ActivatedRoute,
     private storageService: StorageService,
     private userService: UserService,
-    private cd: ChangeDetectorRef
+    
    ){ }
 
   ngOnInit() {
-    // this.data.subscribe(obs => {
-    //   this.obs = obs;
-    //   this.cd.markForCheck();
-    // });
     this.userService.getUserOwner()
-    .subscribe(name =>{
-      this.owner = name;
-      this.cd.markForCheck();
-    })
-        
+    .subscribe(
+      user => this.owner = user     
+    )
+    
+    this.newOwner = this.owner
+    console.log(this.owner)    
   
     // this.userService.changeUser(this.storageService.getStorage())
-    this.owner = this.storageService.getStorage()
+    //  this.owner = this.storageService.getStorage()
+    
     this.authService.getAll(this.owner)
-    .subscribe(result => this.result = result)
+    .subscribe(result => this.result = result
+    )
        
   }  
+  changeUser(){
+    this.owner = this.storageService.getStorage()
+  }
     
   upp(string){
     return string.toUpperCase()
