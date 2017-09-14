@@ -24,8 +24,7 @@ export class NavbarComponent implements OnInit {
    
   ngOnInit() {
     this.userService.getUserOwner()
-    .subscribe(name =>this.owner = name) 
-    console.log(this.owner) 
+    .subscribe(name =>this.owner = name)
   }
   
   // changeUser(){

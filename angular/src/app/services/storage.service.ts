@@ -8,7 +8,7 @@ export class StorageService {
 public userData:any
 public userJson:any;
 public user: String 
-obs = new BehaviorSubject([]);
+
 
   constructor() {
     this.userData = localStorage.getItem("user");
@@ -17,18 +17,13 @@ obs = new BehaviorSubject([]);
   
    getStorage(){
         if(this.userJson == null ){
-             this.user = "ja" 
+          this.user = "ja" 
         } else {
-          this.user = this.userJson.username
-        
+          this.user = this.userJson.username        
         }
         // console.log(this.user)   
-        return this.user
-             
+        return this.user             
    }  
-   
-   addObs(obs) {
-    this.obs.next(obs);
-  }
+  
 
 }

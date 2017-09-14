@@ -35,9 +35,10 @@ import * as moment from 'moment';
 
 export class AllComponent implements OnInit {
 
-  owner: String
+  owner: any
   newOwner: String  
   message: any
+  user: any
 
   public client = {
      state:"hide",
@@ -61,17 +62,18 @@ export class AllComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserOwner()
-    .subscribe(
-      user => this.owner = user     
+    .flatMap((user) => {
+      this.user = user
+      console.log(user)
+      return user        
+      }
     )
+    .subscribe(user => this.user = user)
     
-    this.newOwner = this.owner
-    console.log(this.owner)    
-  
     // this.userService.changeUser(this.storageService.getStorage())
     //  this.owner = this.storageService.getStorage()
     
-    this.authService.getAll(this.owner)
+    this.authService.getAll(this.user || this.storageService.getStorage())
     .subscribe(result => this.result = result
     )
        
