@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.userService.changeUser(this.username)
         
         
-      this.router.navigate(['/profile'])
+      this.router.navigate(['all'])
 
     } else {
       this.flashMessage.show(

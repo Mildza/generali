@@ -1,14 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { AuthService } from '../../services/auth.service'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 import { trigger, state, style, animate, transition } 
-from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
+from '@angular/animations'
 import { StorageService } from '../../services/storage.service'
 import { UserService } from '../../services/user.service'
 import { CapitalizePipe } from '../../pipes/capitalize.pipe'
 import { DatePipe } from '../../pipes/date.pipe'
-import * as moment from 'moment';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-all',
@@ -35,10 +34,9 @@ import * as moment from 'moment';
 
 export class AllComponent implements OnInit {
 
-  owner: any
-  newOwner: String  
+  owner: String 
   message: any
-  user: any
+  // user: [String]
 
   public client = {
      state:"hide",
@@ -47,9 +45,7 @@ export class AllComponent implements OnInit {
   
   show: boolean = true
   result: {}  
-  policystate: boolean = true
-  @Input() data: Observable<any>;
-  obs: string;
+ 
 
   constructor(
     private authService:AuthService,
@@ -62,20 +58,26 @@ export class AllComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUserOwner()
-    .flatMap((user) => {
-      this.user = user
-      console.log(user)
-      return user        
-      }
-    )
-    .subscribe(user => this.user = user)
-    
+    // .flatMap((user) => {
+    //   this.owner = user      
+    //   return user        
+    //   }
+    // )
+    .subscribe(name => {
+      this.owner = name
+      // console.log(this.owner)     
+      
+    })    
+
     // this.userService.changeUser(this.storageService.getStorage())
     //  this.owner = this.storageService.getStorage()
-    
-    this.authService.getAll(this.user || this.storageService.getStorage())
+
+    this.authService.getAll(this.owner || this.storageService.getStorage())
     .subscribe(result => this.result = result
     )
+
+    this.userService.source
+    this.userService.subscription
        
   }  
   changeUser(){
