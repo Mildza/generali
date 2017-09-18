@@ -30,7 +30,7 @@ export class UserService {
 
 
   subscription = this.source.subscribe(
-  x => console.log('onNext: %s', x),
+  x => console.log(x),
   e => console.log('onError: %s', e),
   () => console.log('onCompleted'));
 

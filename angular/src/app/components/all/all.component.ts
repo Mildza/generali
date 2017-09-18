@@ -57,6 +57,7 @@ export class AllComponent implements OnInit {
    ){ }
 
   ngOnInit() {
+    this.userService.changeUser("milan")
     this.userService.getUserOwner()
     // .flatMap((user) => {
     //   this.owner = user      
@@ -64,22 +65,19 @@ export class AllComponent implements OnInit {
     //   }
     // )
     .subscribe(name => {
-      this.owner = name
-      // console.log(this.owner)     
-      
-    })    
-
+      name = name
+      console.log(name) 
+    }) 
     // this.userService.changeUser(this.storageService.getStorage())
     //  this.owner = this.storageService.getStorage()
 
-    this.authService.getAll(this.owner || this.storageService.getStorage())
+    this.authService.getAll(name || this.storageService.getStorage())
     .subscribe(result => this.result = result
     )
-
     this.userService.source
-    this.userService.subscription
-       
+    this.userService.subscription       
   }  
+
   changeUser(){
     this.owner = this.storageService.getStorage()
   }
