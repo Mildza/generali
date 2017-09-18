@@ -20,7 +20,7 @@
              <li *ngIf="authService.loggedIn()"><a (click)="changeUer" [routerLink]="['/find']">Trazi</a></li>
              <!--<li *ngIf="authService.loggedIn()"><a [routerLink]="['/search']">Proba</a></li>  -->
             <li *ngIf="authService.loggedIn()"><a (click)="changeUer" [routerLink]="['/dashboard']">Dodaj</a></li>
-            <li *ngIf="authService.loggedIn()" class="profile"><a (click)="changeUer" [routerLink]="['/profile']">{{owner ||"Profile" | capitalize  }} </a></li>            
+            <li *ngIf="authService.loggedIn()" class="profile"><a (click)="changeUer" [routerLink]="['/profile']">{{sudouser ||"Profile" | capitalize  }} </a></li>            
             <li *ngIf="!authService.loggedIn()"><a (click)="changeUer" [routerLink]="['/login']">LogIn</a></li>
             <li *ngIf="!authService.loggedIn()"><a  (click)="changeUer" [routerLink]="['/register']">Register</a></li>
             <li *ngIf="authService.loggedIn()"><a href="#" (click)="onLogoutClick()">Logout</a></li>

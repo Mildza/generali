@@ -5,6 +5,7 @@ import {FlashMessagesService} from 'angular2-flash-messages'
 import {Router} from '@angular/router'
 import {StorageService} from '../../services/storage.service'
 import {PolicyService} from '../../services/policy.service'
+import { UserService } from '../../services/user.service'
 
 import * as moment from 'moment';
 
@@ -33,7 +34,8 @@ export class DashboardComponent implements OnInit {
   month: String
   year: String
   additional: String
-
+  sudouser: String
+  
   public selectPolice: any
   public selectOption: any
    
@@ -45,11 +47,13 @@ export class DashboardComponent implements OnInit {
     private flashMessage: FlashMessagesService,
     private router: Router,
     private storageService: StorageService,
-    private policyService: PolicyService
-    
-   
-    
-  ) {  }
+    private policyService: PolicyService,
+    private userService: UserService     
+  ) {
+      this.userService.sudouser.subscribe(sudouser => {
+      this.sudouser = sudouser
+      }) 
+    }
 
   ngOnInit() {   
     var today = (moment().format('L'))
@@ -64,7 +68,7 @@ export class DashboardComponent implements OnInit {
 
   }
   onAddSubmit(){
-    this.owner = this.storageService.getStorage()
+    
     const client = {
       firstname:  this.validateService.toLowerCase(this.firstname),
       lastname: this.validateService.toLowerCase(this.lastname),
@@ -80,7 +84,7 @@ export class DashboardComponent implements OnInit {
       additional: this.additional,
       recommendation: this.recommendation,
       note: this.note,
-      owner: this.owner
+      owner: this.sudouser
       
     }     
 

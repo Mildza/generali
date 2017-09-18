@@ -4,7 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router'
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import { Http } from '@angular/http';
-import {StorageService} from '../../services/storage.service'
+import { UserService } from '../../services/user.service'
 import {PolicyService} from '../../services/policy.service'
 
 import * as moment from 'moment';
@@ -72,7 +72,7 @@ export class UpdateComponent implements OnInit {
   } 
 
   data:{}
-
+  sudouser: String
   id:{String}
 
   selectPolicy: any
@@ -85,7 +85,7 @@ export class UpdateComponent implements OnInit {
     private fb: FormBuilder,
     private flashMessage: FlashMessagesService,
     private http: Http,
-    private storageService: StorageService,
+    private userService: UserService,
     private policyService: PolicyService
     ) {
       
@@ -209,7 +209,7 @@ export class UpdateComponent implements OnInit {
     warning: warning2.value,    
     recommendation: recommendation2.value,
     note: note2.value,
-    owner:this.storageService.getStorage(),
+    owner:this.sudouser,
     _id:id
   }
   

@@ -34,9 +34,8 @@ import * as moment from 'moment'
 
 export class AllComponent implements OnInit {
 
-  owner: String 
   message: any
-  // user: [String]
+  sudouser: String
 
   public client = {
      state:"hide",
@@ -45,42 +44,28 @@ export class AllComponent implements OnInit {
   
   show: boolean = true
   result: {}  
- 
 
   constructor(
     private authService:AuthService,
     private router:Router,
     private route: ActivatedRoute,
     private storageService: StorageService,
-    private userService: UserService,
+    private userService: UserService
     
-   ){ }
+   ){
+      this.userService.sudouser.subscribe(sudouser => {
+      this.sudouser = sudouser
+      })  
+    }
 
   ngOnInit() {
-    this.userService.changeUser("milan")
-    this.userService.getUserOwner()
-    // .flatMap((user) => {
-    //   this.owner = user      
-    //   return user        
-    //   }
-    // )
-    .subscribe(name => {
-      name = name
-      console.log(name) 
-    }) 
-    // this.userService.changeUser(this.storageService.getStorage())
-    //  this.owner = this.storageService.getStorage()
 
-    this.authService.getAll(name || this.storageService.getStorage())
+    this.authService.getAll(this.sudouser || this.storageService.getStorage())
     .subscribe(result => this.result = result
     )
-    this.userService.source
-    this.userService.subscription       
+        
   }  
 
-  changeUser(){
-    this.owner = this.storageService.getStorage()
-  }
     
   upp(string){
     return string.toUpperCase()

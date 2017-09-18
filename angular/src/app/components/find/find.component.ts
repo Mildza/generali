@@ -6,6 +6,7 @@ import {Validators } from '@angular/forms'
 import {StorageService} from '../../services/storage.service'
 import {FlashMessagesService} from 'angular2-flash-messages'
 import {ValidateService} from '../../services/validate.service'
+import { UserService } from '../../services/user.service'
 
 declare var $:any;
 
@@ -40,27 +41,31 @@ export class FindComponent implements OnInit {
   id: String
   update : {}
   client: {}
-  owner: String
   user: String
   count:number
+  sudouser: String
 
   constructor(
     private authService:AuthService,
     private router:Router,
     private flashMessage: FlashMessagesService ,
     private storageService: StorageService,
-    private validateService: ValidateService
-  ) { }
+    private validateService: ValidateService,
+    private userService: UserService
+  ) {
+    this.userService.sudouser.subscribe(sudouser => {
+      this.sudouser = sudouser
+    }) 
+   }
 
   ngOnInit() { 
-    this.owner = this.storageService.getStorage()
     this.count = 0      
   }
 
   onFindSubmit(){
       const search = {
       firstname: this.validateService.toLowerCase(this.firstname),
-      user: this.owner    
+      user: this.sudouser    
     }
     
     this.authService.postFind(search)

@@ -16,21 +16,21 @@ export class LoginComponent implements OnInit {
   username: String
   password: String
   user: String
-  owner: String
+  sudouser: String
 
   constructor(
     private authService:AuthService,
     private flashMessage: FlashMessagesService ,
     private router: Router,
     private storageService: StorageService,
-    private userService: UserService
-  ) { }
+    private userService: UserService 
+     
+  ) { this.userService.sudouser.subscribe(sudouser => {
+    this.sudouser = sudouser
+}) }
 
   ngOnInit() {
-    this.userService.getUserOwner()
-    .subscribe(name => {
-      this.owner = name;
-    })
+    
   }
 
   onLoginSubmit(){
@@ -48,8 +48,9 @@ export class LoginComponent implements OnInit {
         timeout: 3000})
         
         this.storageService.getStorage()
-        this.userService.changeUser(this.username)
-        
+
+        let sudouser = this.username;
+        this.userService.sudouser.next(sudouser);
         
       this.router.navigate(['all'])
 

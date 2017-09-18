@@ -12,7 +12,7 @@ import { UserService } from '../../services/user.service'
 })
 export class NavbarComponent implements OnInit {
 
-  owner:String
+  sudouser: String
 
   constructor(
     public authService:AuthService,
@@ -20,11 +20,14 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     private storageService: StorageService,
     private userService: UserService
-    ) { }
+    ) {
+      this.userService.sudouser.subscribe(sudouser => {
+        this.sudouser = sudouser
+      })  
+     }
    
   ngOnInit() {
-    this.userService.getUserOwner()
-    .subscribe(name =>this.owner = name)
+   
   }
   
   // changeUser(){
