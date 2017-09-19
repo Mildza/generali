@@ -125,7 +125,7 @@
     </div>
 
     <div class="row">
-      <div *ngIf=client.address>
+      <div *ngIf="client.address && client.address.city ">
         <label  for="city" class="col-sm-2 control-label label-padding">Grad:</label>
         <div class="col-sm-9 well well-sm white field-margin">
                 {{client.address.city}}
@@ -134,7 +134,7 @@
     </div>
 
     <div class="row">
-        <div *ngIf=client.address>
+        <div *ngIf="client.address && client.address.street ">
             <label  class="col-sm-2 control-label label-padding">Ulica:</label>
             <div class="col-sm-9 well well-sm white field-margin">
                 {{client.address.street}}

@@ -34,25 +34,25 @@ export class RegisterComponent implements OnInit {
   }
 
     if(!this.validateService.validateRegister(user)){
-      this.flashMessage.show('Please fill all fields', {cssClass: 'alert-danger', timeout: 3000})
+      this.flashMessage.show('Popunite sva polja', {cssClass: 'alert-danger', timeout: 3000})
       return false
     }
     // Validate email //
     if(!this.validateService.validateEmail(user.email)){
-    this.flashMessage.show('Please use a valid email address', {cssClass: 'alert-danger', timeout: 3000})
+    this.flashMessage.show('Koristite validnu email adresu', {cssClass: 'alert-danger', timeout: 3000})
       return false
     }
     // register User //    
     this.authService.checkUser(this.username).subscribe(data =>{
       if(data.success){
-        this.flashMessage.show('username is taken, choose another one', {cssClass: 'alert-danger', timeout: 3000})
+        this.flashMessage.show('username je zauzet, izaberite drugo', {cssClass: 'alert-danger', timeout: 3000})
       } else if(!data.succes){
       this.authService.registerUser(user).subscribe(data => {
         if(data.success){
-          this.flashMessage.show('You are now reistered and can log in', {cssClass: 'alert-success', timeout: 3000})
+          this.flashMessage.show('Registrovani ste i mozete se logovati', {cssClass: 'alert-success', timeout: 3000})
           this.router.navigate(['login'])  
         } else {
-          this.flashMessage.show('Something went wrong', {cssClass: 'alert-danger', timeout: 3000})
+          this.flashMessage.show('Nesto nije u redu', {cssClass: 'alert-danger', timeout: 3000})
           this.router.navigate(['register']) 
           }
       })

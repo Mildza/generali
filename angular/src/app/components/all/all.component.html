@@ -61,7 +61,7 @@
       </div>
 
       <div class="row">
-        <div *ngIf=client.policy.duration class="padding-left">
+        <div *ngIf=client.policy.startdate class="padding-left">
             <label  for="duration" class="col-sm-2 col-sm-offset-1 control-label label-padding">Proteklo</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{ellapsedTime(client.policy.startdate) }}
@@ -115,7 +115,7 @@
       </div>
       
       <div class="row">          
-        <div *ngIf=client.address>
+        <div *ngIf="client.address && client.address.city ">
             <label  for="city" class="col-sm-2 col-sm-offset-1 control-label label-padding">Grad</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.address.city}}
@@ -124,7 +124,7 @@
       </div>
 
       <div class="row">                    
-        <div *ngIf=client.address>
+        <div *ngIf="client.address && client.address.street">
             <label  class="col-sm-2 col-sm-offset-1 control-label label-padding">Ulica</label>
             <div class="col-sm-8 well well-sm white field-margin">
                 {{client.address.street}}

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     if(data.success){
       this.authService.storeUserData(data.token, data.user)        
       this.flashMessage.show(
-        'You are loged in', {
+        'Ulogovani ste', {
         cssClass: 'alert-success', 
         timeout: 3000})
         

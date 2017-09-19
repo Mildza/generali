@@ -151,8 +151,8 @@ export class UpdateComponent implements OnInit {
         lastname:capitalizeFirstLetters(this.result[0].lastname),
         phone:this.result[0].phone,
         address:{
-          street:this.result[0].address ? this.result[0].address.street:"",
-          city:this.result[0].address ? this.result[0].address.city:"",
+          street:this.result[0].address.street,
+          city:this.result[0].address.city
         },
         policy:{
           selectPolicy:this.selectPolicy.label,
@@ -179,9 +179,9 @@ export class UpdateComponent implements OnInit {
     
     const firstname2 = this.updateForm.get('firstname')  
     const lastname2 = this.updateForm.get('lastname') 
-    const phone2=  this.updateForm.get('phone')
-    const street2= this.updateForm.get('address.street')     
-    const city2= this.updateForm.get('address.city')
+    const phone2 =  this.updateForm.get('phone')
+    const street2 = this.updateForm.get('address.street')
+    const city2 = this.updateForm.get('address.city')
     const describe2= this.updateForm.get('policy.selectPolicy')
     const idpolicy2= this.updateForm.get('policy.idpolicy')
     const value2= this.updateForm.get('policy.values')
@@ -217,7 +217,7 @@ export class UpdateComponent implements OnInit {
     this.authService.updateClient(id, newClient).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Promenjeni podaci', {cssClass: 'alert-success', timeout: 3000})
-        this.router.navigate(['/all/'])  
+        this.router.navigate(['all'])  
       } else {
         this.flashMessage.show('Promena nije uspela', {cssClass: 'alert-danger', timeout: 3000})
         

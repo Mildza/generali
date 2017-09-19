@@ -87,6 +87,7 @@ export class AllComponent implements OnInit {
     rest = rest.replace("months", "meseci")
     rest = rest.replace("days", "dana")
     rest = rest.replace("years", "godina")
+    rest = rest.replace("a month", "mesec dana")
     return rest
   } 
   
