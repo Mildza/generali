@@ -5,6 +5,7 @@
 !/angular/*
 node_modules
 
+/config/database.js
 
 ### VisualStudioCode ###
 .vscode/*
