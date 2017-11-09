@@ -8,6 +8,10 @@
     padding-right: 23px;      
 }
 
+.btn {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px){   
      
   .padding-left{

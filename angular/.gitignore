@@ -9,6 +9,8 @@
 /node_modules
 /src/assets
 
+/config/database.js
+
 # IDEs and editors
 /.idea
 .project

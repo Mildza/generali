@@ -1,9 +1,13 @@
 .padding-left{
     padding-left: 110px;
-    padding-right: 23px; 
-     
-    
+    padding-right: 23px;     
 }
+
+
+#delete {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px){
 
   .padding-left{
