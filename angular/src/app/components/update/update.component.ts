@@ -150,9 +150,9 @@ export class UpdateComponent implements OnInit {
         firstname:capitalizeFirstLetters(this.result[0].firstname),
         lastname:capitalizeFirstLetters(this.result[0].lastname),
         phone:this.result[0].phone,
-        address:{
-          street:this.result[0].address.street,
-          city:this.result[0].address.city
+        address:{          
+          street:this.result[0].address ? this.result[0].address.street : "",
+          city:this.result[0].address ? this.result[0].address.city : ""       
         },
         policy:{
           selectPolicy:this.selectPolicy.label,
