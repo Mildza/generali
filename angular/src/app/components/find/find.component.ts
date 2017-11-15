@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../services/auth.service'
-import {Router} from '@angular/router'
-import {trigger, state, style,animate, transition, group} from '@angular/animations'
-import {Validators } from '@angular/forms'
-import {StorageService} from '../../services/storage.service'
-import {FlashMessagesService} from 'angular2-flash-messages'
-import {ValidateService} from '../../services/validate.service'
+import { AuthService } from '../../services/auth.service'
+import { Router } from '@angular/router'
+import { trigger, state, style,animate, transition, group } from '@angular/animations'
+import { Validators } from '@angular/forms'
+import { StorageService } from '../../services/storage.service'
+import { FlashMessagesService } from 'angular2-flash-messages'
+import { ValidateService } from '../../services/validate.service'
 import { UserService } from '../../services/user.service'
+import { SearchPipe } from '../../pipes/search.pipe'
 
 declare var $:any;
 
@@ -59,27 +60,41 @@ export class FindComponent implements OnInit {
    }
 
   ngOnInit() { 
-    this.count = 0      
+    this.count = 0 
+    this.authService.getAll(this.sudouser || this.storageService.getStorage())
+    .subscribe(result => this.result = result
+    ) 
+       
   }
 
-  onFindSubmit(){
-      const search = {
-      firstname: this.validateService.toLowerCase(this.firstname),
-      user: this.sudouser    
-    }
+  // counter(value, result) {
+  //   console.log(value, result)
+  //   return result.filter(function(client){
+  //     console.log( client.firstname.toLowerCase().includes(value.toLowerCase()))
+       
+  //  })
     
-    this.authService.postFind(search)
-    .subscribe(result => {
-      if(result.success){
-        this.flashMessage.show('Nema takvog klijenta', {cssClass: 'alert-danger', timeout: 3000})
-        this.result = 0
-        this.count = 0        
-      } else {
-        this.result = result
-        this.count = Object.keys(this.result).length       
-        }
-    })
-  }
+  // }
+  
+
+  // onFindSubmit(){
+  //     const search = {
+  //     firstname: this.validateService.toLowerCase(this.firstname),
+  //     user: this.sudouser    
+  //   }
+    
+  //   this.authService.postFind(search)
+  //   .subscribe(result => {
+  //     if(result.success){
+  //       this.flashMessage.show('Nema takvog klijenta', {cssClass: 'alert-danger', timeout: 3000})
+  //       this.result = 0
+  //       this.count = 0        
+  //     } else {
+  //       this.result = result
+  //       this.count = Object.keys(this.result).length       
+  //       }
+  //   })
+  // }
     onSelect(client) {     
     this.router.navigate(['/update', client._id]);
     }

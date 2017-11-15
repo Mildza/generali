@@ -27,7 +27,8 @@ import { PolicyService } from './services/policy.service'
 import { UserService } from './services/user.service'
 
 import { CapitalizePipe } from './pipes/capitalize.pipe'
-import { DatePipe } from './pipes/date.pipe'
+import { DatePipe } from './pipes/date.pipe';
+import { SearchPipe } from './pipes/search.pipe'
 
 
 const appRoutes: Routes = [
@@ -58,7 +59,8 @@ const appRoutes: Routes = [
     FindComponent,
     UpdateComponent,
     CapitalizePipe,
-    DatePipe 
+    DatePipe,
+    SearchPipe 
   ],
 
   imports: [
