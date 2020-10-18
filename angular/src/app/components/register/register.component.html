@@ -1,0 +1,41 @@
+<div class="container-fluid">
+<form class="form-horizontal" (submit)="onRegisterSubmit()">
+  <fieldset>
+    <div class="text-center padding">   
+    <h2>REGISTRACIJA</h2>
+    </div> 
+     <div class="form-group row">
+      <label for="inputName" class="col-sm-2 col-sm-offset-2 control-label">Name</label>
+      <div class="col-sm-4 input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-hand-right"></i></span>
+        <input type="text" [(ngModel)]="name" name="name" class="form-control" id="inputName" placeholder="Name" autofocus>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputUsername" class="col-sm-2 col-sm-offset-2 control-label text-left">Username</label>
+      <div class="col-sm-4 input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input type="text" [(ngModel)]="username" name="username"class="form-control" id="inputUsername" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword" class="col-sm-2 col-sm-offset-2 control-label ">Password</label>
+      <div class="col-sm-4 input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input type="password" [(ngModel)]="password" name="password" class="form-control" id="inputPassword" placeholder="Password">      
+    </div>    
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail" class="col-sm-2 col-sm-offset-2 control-label">Email</label>
+      <div class="col-sm-4 input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input type="email" [(ngModel)]="email" name="email" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>   
+  </fieldset>
+  <div>
+    <input type="submit" class="btn btn-primary center-block">
+  </div>
+  
+</form>
+</div>

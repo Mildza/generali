@@ -1,0 +1,46 @@
+.hand {cursor: pointer;}
+
+.search-box {padding:10px 30px;}
+
+.btn-find {margin-bottom: 20px;}
+
+.nav-pills>li {float: none;}
+
+.a-padding {padding-left: 20px;}
+
+.label-padding{padding:11px;}
+
+.padding-left{
+    padding-left: 100px;
+    padding-right: 10px; 
+  }
+
+.clear{
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@media (max-width: 768px){
+
+    .padding-left{
+    padding-left: 20px;
+    padding-right: 2px; 
+    }
+
+    .label-padding {
+      padding-left: 0px;
+      padding-bottom: 0px;
+    }
+
+  .field-margin{margin-bottom:1px;}
+
+  .btn-find {margin-top: 20px;}
+
+  .col-sm-5 {margin-bottom: 10px;}
+
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
+}
+
